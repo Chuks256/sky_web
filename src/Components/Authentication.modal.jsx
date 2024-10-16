@@ -71,14 +71,14 @@ background-color:ivory;
 padding:14px;
 border-radius:5px;
 font-weight:bold;
-font-size:12px;
+font-size:14px;
 `;
 
 const BackBtn = styled.button `
 background-color:var(--sky-preference-bg-shade-color);
 padding:14px;
 border-radius:5px;
-font-size:12px;
+font-size:14px;
 font-weight:bold;
 color:ivory;
 `;
