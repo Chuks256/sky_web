@@ -23,7 +23,7 @@ justify-content:center;
 flex-direction:column;
 align-items:center;
 padding:65px;
-gap:20em;
+gap:18em;
 `;
 
 
@@ -32,8 +32,12 @@ display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
+gap:10px;
 `
 const LogoObject = styled.img``;
+const LogoTxt=styled.b`
+font-size:20px;
+`;
 
 const SplashCtaParentContainer = styled.div`
 display:flex;
@@ -74,6 +78,7 @@ const SplashScreen=()=>{
             <SplashScreenParentContainer>
                 <LogoParentContainer>
                     <LogoObject src={SkyCircle} alt="Sky circle" />
+                    <LogoTxt>Sky.</LogoTxt>
                 </LogoParentContainer>
 
                 {/* Splash cta container */}
