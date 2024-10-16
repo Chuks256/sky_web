@@ -65,7 +65,7 @@ height:48px;
 transition:linear,300ms;
 transform:scale(100%);
 
-&:focus{
+&:hover{
 transform:scale(85%);
 }
 `;
