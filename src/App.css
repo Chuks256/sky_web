@@ -28,5 +28,6 @@ body{
 button{
   border-style:solid;
   border-color:transparent;
+  cursor: pointer;
 
 }

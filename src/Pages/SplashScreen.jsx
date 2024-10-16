@@ -44,13 +44,14 @@ text-align:center;
 `;
 
 const CtaButton = styled.button`
-color:var(--sky-bg-theme);
 padding:14px;
 font-weight:bold;
-width:300px;
+width:309px;
 border-radius:10px;
 background:ivory;
+color:#090909;
 font-size:12px;
+height:48px;
 `;
 
 const SplashScreen=()=>{
