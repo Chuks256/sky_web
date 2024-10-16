@@ -1,42 +1,32 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+@font-face {
+  font-family: "Sky-fonts";
+  src: url("./fonts/Poppins-Regular.ttf");
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+
+:root{
+  --sky-bg-theme:#101111;
+  --sky-txt-color:ivory;
+  --sky-preference-default-color:linear-gradient(to bottom, #2E97FF,#101010 );
+  --sky-preference-default-shade:rgba(46,151,255,45%);
+  --sky-preference-fire-color:linear-gradient(to bottom, #FF2E2E,#101010 );
+  --sky-preference-fire-shade:rgba(255,46,46,45%);
+  --sky-preference-royal-color:linear-gradient(to bottom, #E02EFF,#101010 );
+  --sky-preference-summer-color:linear-gradient(to bottom, #FFE02E,#101010 );
+  --sky-preference-bg-shade-color:#191A1A;
+  --sky-text-size:12px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+body{
+  outline:none;
+  font-family: "Sky-fonts";
+  background-color: var(--sky-bg-theme);
+  color:var(--sky-txt-color);
+  user-select: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
+button{
+  border-style:solid;
+  border-color:transparent;
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
