@@ -22,7 +22,7 @@ display:flex;
 justify-content:center;
 flex-direction:column;
 align-items:center;
-padding:40px;
+padding:65px;
 gap:22em;
 `;
 
