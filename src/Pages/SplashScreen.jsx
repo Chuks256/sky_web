@@ -58,7 +58,14 @@ background:ivory;
 color:#090909;
 font-size:12px;
 height:48px;
+transition:linear,300ms;
+transform:scale(100%);
+
+&:focus{
+transform:scale(85%);
+}
 `;
+
 
 const SplashScreen=()=>{
     return(
