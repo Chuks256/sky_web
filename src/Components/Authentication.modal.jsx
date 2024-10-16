@@ -27,7 +27,7 @@ const PrivateKeyAuthInputSection=styled.div`
 padding:30px;
 display:flex;
 flex-direction:column;
-gap:13.5em;
+gap:10em;
 justify-content:center;
 padding-top:35px;
 `;
