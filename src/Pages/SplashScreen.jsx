@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import skysplash from "../assets/skysplash.png"
+import SkyCircle from "../assets/SkyCircle.png"
 
 const Container = styled.div`
 width:100%;
@@ -22,12 +23,17 @@ justify-content:center;
 flex-direction:column;
 align-items:center;
 padding:40px;
-gap:21em;
+gap:22em;
 `;
 
-const SplashTxt = styled.h2`
-font-size:27px;
-`;
+
+const LogoParentContainer = styled.div`
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+`
+const LogoObject = styled.img``;
 
 const SplashCtaParentContainer = styled.div`
 display:flex;
@@ -59,7 +65,9 @@ const SplashScreen=()=>{
         <Container>
             {/* Define splash parent container  */}
             <SplashScreenParentContainer>
-                <SplashTxt>Sky.</SplashTxt>
+                <LogoParentContainer>
+                    <LogoObject src={SkyCircle} alt="Sky circle" />
+                </LogoParentContainer>
 
                 {/* Splash cta container */}
                 <SplashCtaParentContainer>
