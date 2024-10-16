@@ -22,7 +22,7 @@ justify-content:center;
 flex-direction:column;
 align-items:center;
 padding:40px;
-gap:23em;
+gap:21em;
 `;
 
 const SplashTxt = styled.h2`
@@ -49,7 +49,8 @@ padding:14px;
 font-weight:bold;
 width:300px;
 border-radius:10px;
-bakground:ivory;
+background:ivory;
+font-size:12px;
 `;
 
 const SplashScreen=()=>{
