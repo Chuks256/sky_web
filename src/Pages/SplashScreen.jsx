@@ -23,7 +23,7 @@ justify-content:center;
 flex-direction:column;
 align-items:center;
 padding:65px;
-gap:22em;
+gap:20em;
 `;
 
 
@@ -40,7 +40,7 @@ display:flex;
 justify-content:center;
 flex-direction:column;
 align-items:center;
-gap:20px;
+gap:15px;
 `;
 
 const CtaTxtDetails=styled.p`
