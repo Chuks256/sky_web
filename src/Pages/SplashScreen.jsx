@@ -3,6 +3,9 @@ import styled from "styled-components";
 import skysplash from "../assets/skysplash.png"
 import SkyCircle from "../assets/SkyCircle.png"
 
+//  import components 
+import AuthenticationModal from "../Components/Authentication.modal"
+
 const Container = styled.div`
 width:100%;
 height:100%;
@@ -74,6 +77,7 @@ transform:scale(85%);
 const SplashScreen=()=>{
     return(
         <Container>
+            <AuthenticationModal/>
             {/* Define splash parent container  */}
             <SplashScreenParentContainer>
                 <LogoParentContainer>

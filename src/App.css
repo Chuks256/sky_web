@@ -29,5 +29,10 @@ button{
   border-style:solid;
   border-color:transparent;
   cursor: pointer;
+}
 
+input {
+  border-style:solid;
+  border-color:transparent;
+  outline:none;
 }
