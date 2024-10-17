@@ -116,7 +116,7 @@ padding-top:30px;
 const ButtonInnerParentContainer=styled.div`
 display:flex;
 flex-direction:column;
-gap:20px;
+gap:15px;
 `;
 
 const ButtonTxtElem = styled.p`
@@ -141,8 +141,8 @@ color:ivory
 `;
 
 
-const IntroAuthModal=()=>{
-    const[private_key,setPrivate_key]=useState("nirvrnfrfinrifnrfirfrfrf");
+const IntroAuthModal=(props)=>{
+    const[private_key,setPrivate_key]=useState("n455niirvrnfrfinrifnrfirfrfrf");
     const [copyTxt,setCopyTxt]=useState("Copy");
    
     const AmbientColor=[
@@ -173,7 +173,7 @@ const IntroAuthModal=()=>{
     ]
 
     return(
-        <Container>    
+        <Container style={{display:`${props.showModal}`}}>    
             <IntroAuthBottomSheet>
                 <IntroAuthHeaderContainer>
                     
