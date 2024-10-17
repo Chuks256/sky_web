@@ -79,7 +79,7 @@ transform:scale(85%);
 const SplashScreen=()=>{
     return(
         <Container>
-            <ErrorModal />
+            <ErrorModal reveal='none' />
             <IntroAuthModal showModal="none" />
             <AuthenticationModal reveal="none" />
             {/* Define splash parent container  */}

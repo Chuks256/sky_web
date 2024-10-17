@@ -18,12 +18,12 @@ const ErrorTxtContainer = styled.div``;
 const ErrorTxt=styled.p`font-size:15px`;
 
 
-const ErrorModal=()=>{
+const ErrorModal=(props)=>{
     const [errorMsg,setErrorMsg]=useState("No Internet Connection")
 return(
-        <Container>
+        <Container style={{display:`${props.reveal}`}}>
             <ErrorTxtContainer>
-                <ErrorTxt>{errorMsg}</ErrorTxt>
+                <ErrorTxt>{props.errorMsg}</ErrorTxt>
             </ErrorTxtContainer>
         </Container>
 )

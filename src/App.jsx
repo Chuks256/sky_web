@@ -13,8 +13,8 @@ function App() {
     <>
       <div>
       <Routes>
-      <Route exact path='/' element={<SplashScreen/>} />
-      <Route path='/app' element={<HomeScreen/>} />
+      <Route  path='/app' element={<SplashScreen/>} />
+      <Route exact path='/' element={<HomeScreen/>} />
       <Route path='/tasks' element={<TaskScreen/>} />
       <Route path='/comment/:postid' element={<CommentScreen/>} />
       <Route path='/profile' element={<ProfileScreen/>} />
