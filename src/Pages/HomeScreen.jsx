@@ -20,7 +20,7 @@ left:0px;
 `;
 const AppBarItemsContainer=styled.div `
 display:flex;
-padding:30px;
+padding:25px;
 align-items:center;
 justify-content:space-between
 `;
