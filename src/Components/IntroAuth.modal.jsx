@@ -121,7 +121,7 @@ gap:20px;
 
 const ButtonTxtElem = styled.p`
 text-align:center;
-font-size:11px;`;
+font-size:9px;`;
 
 const CreateButtonElem = styled.button`
 background:ivory;
