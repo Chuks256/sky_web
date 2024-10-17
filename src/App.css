@@ -7,12 +7,12 @@
 :root{
   --sky-bg-theme:#101111;
   --sky-txt-color:ivory;
-  --sky-preference-default-color:linear-gradient(to bottom, #2E97FF,#101010 );
+  --sky-preference-default-color:linear-gradient(to bottom, #2E97FF,rgba(16 ,17, 17, 0%) );
   --sky-preference-default-shade:rgba(46,151,255,45%);
-  --sky-preference-fire-color:linear-gradient(to bottom, #FF2E2E,#101010 );
+  --sky-preference-fire-color:linear-gradient(to bottom, #FF2E2E,rgba(16 ,17, 17, 0%)  );
   --sky-preference-fire-shade:rgba(255,46,46,45%);
-  --sky-preference-royal-color:linear-gradient(to bottom, #E02EFF,#101010 );
-  --sky-preference-summer-color:linear-gradient(to bottom, #FFE02E,#101010 );
+  --sky-preference-royal-color:linear-gradient(to bottom, #E02EFF,rgba(16 ,17, 17, 0%)  );
+  --sky-preference-summer-color:linear-gradient(to bottom, #FFE02E,rgba(16 ,17, 17, 0%)  );
   --sky-preference-bg-shade-color:#191A1A;
   --sky-text-size:12px;
 }

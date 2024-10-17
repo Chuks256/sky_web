@@ -8,7 +8,7 @@ flex-direction:column;
 
 const AppBarHeader= styled.div`
 position:absolute;
-background:var(--sky-preference-default-color);
+background:var(--sky-preference-royal-color);
 width:100%;
 top:0px;
 height:40%;
