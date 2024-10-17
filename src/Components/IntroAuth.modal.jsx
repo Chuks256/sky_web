@@ -23,10 +23,13 @@ border-radius:30px 30px 0px 0px;
 position:absolute;
 right:0px;
 left:0px;
+display:flex;
+justify-content:center;
+
 `;
 
 const IntroAuthHeaderContainer=styled.div`
-padding:35px;
+padding:30px;
 line-height:10px;
 `;
 
