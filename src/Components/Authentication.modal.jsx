@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useState } from "react";
 
 const Container = styled.div`
 position:absolute;
@@ -84,8 +85,9 @@ color:ivory;
 `;
 
 const AuthenticationModal=(props)=>{
+
     return(
-        <Container>
+        <Container style={{display:`${props.reveal}`}}>
         <AuthenticationBottomSheet>
 
             <PrivateKeyAuthInputSection>
@@ -93,7 +95,7 @@ const AuthenticationModal=(props)=>{
                 {/* input text section  */}
                 <PrivateParentTxtContainer>
                 <PrivateTxtContainer>
-                    <PrivateTxtHeader>Import Account</PrivateTxtHeader>
+                    <PrivateTxtHeader>Import Account </PrivateTxtHeader>
                     <PrivateTxtDetails>Enter your private key to import your account</PrivateTxtDetails>
                 </PrivateTxtContainer>
                 <PrivateInputBox placeholder="Private Key" required="true" />
