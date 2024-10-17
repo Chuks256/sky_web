@@ -20,12 +20,12 @@ left:0px;
 `;
 const AppBarItemsContainer=styled.div `
 display:flex;
-padding:35px;
+padding:30px;
 align-items:center;
 justify-content:space-between
 `;
 const UserProfilePics=styled.div`
-padding:25px;
+padding:20px;
 background:grey;
 border-radius:100px;
 `;
@@ -53,9 +53,9 @@ const HomeScreen=()=>{
                     <UserPointBalance>
                     <PiStarFourFill  size={20}/>
                     {skyPoint}
-                    <IoMdArrowDropdown size={30} />
+                    <IoMdArrowDropdown size={30} style={{cursor:"pointer"}} />
                     </UserPointBalance>
-                    <RiNotification4Fill size={30} />
+                    <RiNotification4Fill size={30}  style={{cursor:"pointer"}} />
                 </AppBarItemsContainer>
             </AppBarHeader>
 
