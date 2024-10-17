@@ -97,7 +97,7 @@ background:var(--sky-preference-bg-shade-color);
 border-radius:5px;
 display:flex;
 cursor:pointer;
-transition:linear,300ms;
+transition:linear,100ms;
 &:hover{
 background:ivory;
 color:var(--sky-bg-theme);
@@ -207,7 +207,7 @@ const IntroAuthModal=()=>{
 
                     {/* button section */}
                     <ButtonParentContainer>
-                        <ButtonTxtElem >Your private key will bbe used to recover your account</ButtonTxtElem>
+                        <ButtonTxtElem >Your private key will be used to recover your account</ButtonTxtElem>
 
                       <ButtonInnerParentContainer>
                       <CreateButtonElem>Create Account </CreateButtonElem>
