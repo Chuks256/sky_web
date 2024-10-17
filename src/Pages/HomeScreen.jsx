@@ -5,6 +5,9 @@ import { PiStarFourFill } from "react-icons/pi";
 import { IoMdArrowDropdown } from "react-icons/io";
 import {useState} from "react"
 
+// import components 
+import BottomNavigation from "../Components/BottomNavigation";
+
 const Container = styled.div`
 display:flex;
 flex-direction:column;
@@ -59,6 +62,11 @@ const HomeScreen=()=>{
                     <RiNotification4Fill size={30}  style={{cursor:"pointer"}} />
                 </AppBarItemsContainer>
             </AppBarHeader>
+
+            {/* Post section */}
+
+            {/* Bottom Navigaion */}
+            <BottomNavigation />
 
         </Container>
     )
