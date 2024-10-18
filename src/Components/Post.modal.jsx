@@ -62,7 +62,7 @@ gap:3em;
 
 const ProfileSubContainer=styled.div`
 display:flex;
-gap:190px;
+gap:185px;
 align-items:center;
 `;
 
