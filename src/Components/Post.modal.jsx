@@ -13,7 +13,7 @@ const Container = styled.div`
 display:flex;
 z-index:1;
 padding-top:110px;
-padding-left:16px;
+padding-left:21px;
 `
 
 const PostSubContainer = styled.div`
@@ -51,6 +51,7 @@ font-size:9px;
 
 const PostContent = styled.span`
 font-size:12px;
+width:350px;
 `;
 
 const ReactionContainer = styled.div `
@@ -61,7 +62,7 @@ gap:3em;
 
 const ProfileSubContainer=styled.div`
 display:flex;
-gap:19em;
+gap:15em;
 align-items:center;
 `;
 
