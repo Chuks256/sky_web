@@ -25,7 +25,7 @@ flex-direction:column;
 const ProfileContainer = styled.div`
 display:flex;
 align-items:center;
-gap:10em;
+gap:0.8em;
 `;
 
 const UserProfilePics = styled.div`
@@ -50,10 +50,11 @@ const Timestamp = styled.p`
 font-size:11px;
 `;
 
-const PostContent = styled.span`
+const PostContent = styled.div`
 font-size:12px;
 width:290px;
-padding-left:68px;
+align-items:center;
+padding-left:70px;
 `;
 
 const ReactionContainer = styled.div `
@@ -61,14 +62,15 @@ display:flex;
 align-items:center;
 gap:3em;
 padding-top:5px;
-padding-right:80px;
+padding-right:60px;
 `;
 
 const ProfileSubContainer=styled.div`
 display:flex;
 align-items:center;
-gap:1em;
+gap:10em;
 `;
+
 
 
 
@@ -78,26 +80,28 @@ const PostModal=(props)=>{
       <ParentContainer style={{display:`${props.revealPost}`}}>
 <Container >     
 <ProfileContainer>
-   <ProfileSubContainer>
-   <UserProfilePics></UserProfilePics>
+<UserProfilePics></UserProfilePics>
+
+    <ProfileSubContainer>
    <ProfileDataContainer>
        <UserProfileName>{props.username}</UserProfileName>
        <Timestamp>{props.timestamp}</Timestamp>
    </ProfileDataContainer>
-   </ProfileSubContainer>
    <SlOptionsVertical />
+   </ProfileSubContainer>
+   
 </ProfileContainer>
  
- {/* post content section */}
- <PostContent>{props.postcontent}
+    {/* post content section */}
+    <PostContent>{props.postcontent}
  </PostContent>
 
 
  {/* reaction section */}
  <ReactionContainer>
-   <BiUpvote size={20}/>
-   <BiDownvote size={20}/>
-   <BsChatSquareText size={20} />
+   <BiUpvote size={19}/>
+   <BiDownvote size={19}/>
+   <BsChatSquareText size={19} />
  </ReactionContainer>
 
 </Container>
