@@ -46,7 +46,7 @@ font-size:12px;
 `;
 
 const Timestamp = styled.p`
-font-size:9px;
+font-size:10px;
 `;
 
 const PostContent = styled.span`
@@ -58,6 +58,7 @@ const ReactionContainer = styled.div `
 display:flex;
 align-items:center;
 gap:3em;
+padding-top:5px;
 `;
 
 const ProfileSubContainer=styled.div`
