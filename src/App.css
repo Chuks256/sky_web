@@ -36,3 +36,6 @@ input {
   border-color:transparent;
   outline:none;
 }
+*{
+  user-zoom:none;
+}
