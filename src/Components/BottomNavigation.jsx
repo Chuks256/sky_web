@@ -51,7 +51,7 @@ flex-direction:column;
 font-size:12px`;
 
 const FriendNavContainer = styled.div`
-gap:5px;
+gap:4px;
 display:flex;
 align-items:center;
 flex-direction:column;
