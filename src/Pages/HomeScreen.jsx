@@ -7,6 +7,7 @@ import {useState} from "react"
 
 // import components 
 import BottomNavigation from "../Components/BottomNavigation";
+import PostModal from "../Components/Post.modal";
 
 const Container = styled.div`
 display:flex;
@@ -64,6 +65,7 @@ const HomeScreen=()=>{
             </AppBarHeader>
 
             {/* Post section */}
+            <PostModal />
 
             {/* Bottom Navigaion */}
             <BottomNavigation />
