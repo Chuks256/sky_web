@@ -12,11 +12,14 @@ import { SlOptionsVertical } from "react-icons/sl";
 const Container = styled.div`
 display:flex;
 z-index:1;
-padding-top:100px;
 flex-direction:column;
-gap:10px;
+gap:5px;
 align-items:center;
-
+`
+const ParentContainer=styled.div`
+display:flex;
+padding-top:30px;
+flex-direction:column;
 `
 
 const ProfileContainer = styled.div`
@@ -73,36 +76,40 @@ gap:1em;
 
 const PostModal=()=>{
     return(
-        <Container >     
+      <ParentContainer>
+          <Container >     
 
-         <ProfileContainer>
-            <ProfileSubContainer>
-            <UserProfilePics></UserProfilePics>
-            <ProfileDataContainer>
-                <UserProfileName>JaneTheGoddess</UserProfileName>
-                <Timestamp>25Sec ago</Timestamp>
-            </ProfileDataContainer>
-            </ProfileSubContainer>
-            <SlOptionsVertical />
-         </ProfileContainer>
-          
-          {/* post content section */}
-          <PostContent>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-          Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-          </PostContent>
-
-          
+<ProfileContainer>
+   <ProfileSubContainer>
+   <UserProfilePics></UserProfilePics>
+   <ProfileDataContainer>
+       <UserProfileName>JaneTheGoddess</UserProfileName>
+       <Timestamp>25Sec ago</Timestamp>
+   </ProfileDataContainer>
+   </ProfileSubContainer>
+   <SlOptionsVertical />
+</ProfileContainer>
+ 
+ {/* post content section */}
+ <PostContent>
+ Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+ Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+ </PostContent>
 
 
-          {/* reaction section */}
-          <ReactionContainer>
-            <BiUpvote size={20}/>
-            <BiDownvote size={20}/>
-            <BsChatSquareText size={20} />
-          </ReactionContainer>
 
-        </Container>
+
+ {/* reaction section */}
+ <ReactionContainer>
+   <BiUpvote size={20}/>
+   <BiDownvote size={20}/>
+   <BsChatSquareText size={20} />
+ </ReactionContainer>
+
+</Container>
+
+      </ParentContainer>
+      
     )
 }
 

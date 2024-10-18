@@ -12,6 +12,7 @@ import PostModal from "../Components/Post.modal";
 const Container = styled.div`
 display:flex;
 flex-direction:column;
+height:150vh;
 `;
 
 const AppBarHeader= styled.div`
@@ -22,6 +23,7 @@ top:0px;
 height:40%;
 left:0px;
 `;
+
 const AppBarItemsContainer=styled.div `
 display:flex;
 padding:25px;
@@ -45,6 +47,12 @@ font-size:14px;
 font-weight:bold;
 `;
 
+const PostParentContainer = styled.div`
+display:flex;
+flex-direction:column;
+padding-top:80px;
+`
+
 const HomeScreen=()=>{
 
     const [skyPoint,setSkyPointBalance]=useState("20k Sky")
@@ -53,6 +61,7 @@ const HomeScreen=()=>{
         <Container>
             {/* Header */}
             <AppBarHeader>
+
                 <AppBarItemsContainer>
                     <UserProfilePics></UserProfilePics>
                     <UserPointBalance>
@@ -65,14 +74,18 @@ const HomeScreen=()=>{
             </AppBarHeader>
 
             {/* Post section */}
+            <PostParentContainer>
             <PostModal />
             <PostModal />
             <PostModal />
+            <PostModal />
+            <PostModal />
+            </PostParentContainer>
+           
             
 
             {/* Bottom Navigaion */}
             <BottomNavigation />
-
         </Container>
     )
 }
