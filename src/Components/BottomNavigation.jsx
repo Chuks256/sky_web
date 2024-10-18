@@ -19,6 +19,7 @@ background:rgba(16,17,17,40%);
 backdrop-filter:blur(40px);
 height:80px;
 width:98%;
+display:flex;
 `;
 
 
@@ -26,7 +27,7 @@ const BottomNavigationContainer=styled.div`
 display:flex;
 justify-content:center;
 align-items:center;
-gap:5em;
+gap:4em;
 `;
 
 const HomeNavContainer = styled.div`
@@ -51,7 +52,7 @@ flex-direction:column;
 font-size:12px`;
 
 const FriendNavContainer = styled.div`
-gap:4px;
+gap:5px;
 display:flex;
 align-items:center;
 flex-direction:column;
