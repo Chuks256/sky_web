@@ -66,6 +66,9 @@ const HomeScreen=()=>{
 
             {/* Post section */}
             <PostModal />
+            <PostModal />
+            <PostModal />
+            
 
             {/* Bottom Navigaion */}
             <BottomNavigation />

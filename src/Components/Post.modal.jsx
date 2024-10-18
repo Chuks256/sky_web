@@ -92,6 +92,9 @@ const PostModal=()=>{
           Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
           </PostContent>
 
+          
+
+
           {/* reaction section */}
           <ReactionContainer>
             <BiUpvote size={20}/>
