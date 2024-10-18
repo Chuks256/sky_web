@@ -50,7 +50,7 @@ font-size:11px;
 const PostContent = styled.span`
 font-size:12px;
 width:290px;
-padding-left:50px;
+padding-left:90px;
 `;
 
 const ReactionContainer = styled.div `
@@ -58,7 +58,7 @@ display:flex;
 align-items:center;
 gap:3em;
 padding-top:5px;
-padding-right:90px;
+padding-right:50px;
 `;
 
 const ProfileSubContainer=styled.div`
