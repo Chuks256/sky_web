@@ -27,7 +27,7 @@ const BottomNavigationContainer=styled.div`
 display:flex;
 justify-content:center;
 align-items:center;
-gap:2em;
+gap:1.5em;
 `;
 
 const HomeNavContainer = styled.div`
