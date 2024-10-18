@@ -22,7 +22,7 @@ align-items:center;
 const ProfileContainer = styled.div`
 display:flex;
 align-items:center;
-gap:8em;
+gap:10em;
 `;
 
 const UserProfilePics = styled.div`
@@ -50,7 +50,7 @@ font-size:11px;
 const PostContent = styled.span`
 font-size:12px;
 width:290px;
-padding-left:90px;
+padding-left:60px;
 `;
 
 const ReactionContainer = styled.div `
@@ -58,7 +58,7 @@ display:flex;
 align-items:center;
 gap:3em;
 padding-top:5px;
-padding-right:50px;
+padding-right:80px;
 `;
 
 const ProfileSubContainer=styled.div`
