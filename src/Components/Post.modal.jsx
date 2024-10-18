@@ -51,7 +51,7 @@ font-size:9px;
 
 const PostContent = styled.span`
 font-size:12px;
-width:310px;
+width:290px;
 `;
 
 const ReactionContainer = styled.div `
@@ -62,7 +62,7 @@ gap:3em;
 
 const ProfileSubContainer=styled.div`
 display:flex;
-justify-content:space-between;
+gap:200px;
 align-items:center;
 `;
 
@@ -82,6 +82,7 @@ const PostModal=()=>{
                     <Timestamp>25Sec</Timestamp>
                 </ProfileDataContainer>
                 <SlOptionsVertical />
+       
                 </ProfileSubContainer>
                 
 
