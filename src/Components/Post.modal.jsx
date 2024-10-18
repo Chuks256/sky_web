@@ -16,18 +16,13 @@ padding-top:100px;
 flex-direction:column;
 gap:10px;
 align-items:center;
-`
 
-const PostSubContainer = styled.div`
-display:flex;
-flex-direction:column;
-gap:0.9em;
-`;
+`
 
 const ProfileContainer = styled.div`
 display:flex;
 align-items:center;
-gap:10em;
+gap:8em;
 `;
 
 const UserProfilePics = styled.div`
@@ -63,7 +58,7 @@ display:flex;
 align-items:center;
 gap:3em;
 padding-top:5px;
-padding-right:100px;
+padding-right:90px;
 `;
 
 const ProfileSubContainer=styled.div`
