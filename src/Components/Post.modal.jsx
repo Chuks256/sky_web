@@ -13,7 +13,7 @@ const Container = styled.div`
 display:flex;
 z-index:1;
 padding-top:110px;
-padding-left:21px;
+justify-content:center;
 `
 
 const PostSubContainer = styled.div`
