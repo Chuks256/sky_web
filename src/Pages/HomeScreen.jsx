@@ -54,8 +54,55 @@ padding-top:80px;
 `
 
 const HomeScreen=()=>{
-
     const [skyPoint,setSkyPointBalance]=useState("20k Sky")
+    
+    const dummyData=[
+        {
+            username:"JaneTheBaddie",
+            timestamp:`${new Date().getSeconds()} Sec ago`,
+            postcontent:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore "
+        },
+        {
+            username:"JaneTheBaddie",
+            timestamp:`${new Date().getSeconds()} Sec ago`,
+            postcontent:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore"
+        },
+        {
+            username:"JaneTheBaddie",
+            timestamp:`${new Date().getSeconds()} Sec ago`,
+            postcontent:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore"
+        },
+        {
+            username:"JaneTheBaddie",
+            timestamp:`${new Date().getSeconds()} Sec ago`,
+            postcontent:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore"
+        },
+        {
+            username:"JaneTheBaddie",
+            timestamp:`${new Date().getSeconds()} Sec ago`,
+            postcontent:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore"
+        },
+        {
+            username:"JaneTheBaddie",
+            timestamp:`${new Date().getSeconds()} Sec ago`,
+            postcontent:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et"
+        },
+        {
+            username:"JaneTheBaddie",
+            timestamp:`${new Date().getSeconds()} Sec ago`,
+            postcontent:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore "
+        },
+        {
+            username:"JaneTheBaddie",
+            timestamp:`${new Date().getSeconds()} Sec ago`,
+            postcontent:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore "
+        },
+        {
+            username:"JaneTheBaddie",
+            timestamp:`${new Date().getSeconds()} Sec ago`,
+            postcontent:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore "
+        }
+    ]
 
     return(
         <Container>
@@ -77,11 +124,12 @@ const HomeScreen=()=>{
 
             {/* Post section */}
             <PostParentContainer>
-            <PostModal />
-            <PostModal />
-            <PostModal />
-            <PostModal />
-            <PostModal />
+                {
+                    dummyData.map((data)=>(
+                        <PostModal revealPost="flex" username={data.username} timestamp={data.timestamp} postcontent={data.postcontent} />
+                    ))
+                }
+           
             </PostParentContainer>
            
             

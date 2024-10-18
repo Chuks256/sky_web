@@ -53,7 +53,7 @@ font-size:11px;
 const PostContent = styled.span`
 font-size:12px;
 width:290px;
-padding-left:60px;
+padding-left:68px;
 `;
 
 const ReactionContainer = styled.div `
@@ -73,30 +73,24 @@ gap:1em;
 
 
 
-
-const PostModal=()=>{
+const PostModal=(props)=>{
     return(
-      <ParentContainer>
-          <Container >     
-
+      <ParentContainer style={{display:`${props.revealPost}`}}>
+<Container >     
 <ProfileContainer>
    <ProfileSubContainer>
    <UserProfilePics></UserProfilePics>
    <ProfileDataContainer>
-       <UserProfileName>JaneTheGoddess</UserProfileName>
-       <Timestamp>25Sec ago</Timestamp>
+       <UserProfileName>{props.username}</UserProfileName>
+       <Timestamp>{props.timestamp}</Timestamp>
    </ProfileDataContainer>
    </ProfileSubContainer>
    <SlOptionsVertical />
 </ProfileContainer>
  
  {/* post content section */}
- <PostContent>
- Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
- Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+ <PostContent>{props.postcontent}
  </PostContent>
-
-
 
 
  {/* reaction section */}
