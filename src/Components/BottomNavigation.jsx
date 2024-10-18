@@ -20,6 +20,7 @@ backdrop-filter:blur(40px);
 height:90px;
 width:98%;
 display:flex;
+overflow-y:hidden;
 `;
 
 
