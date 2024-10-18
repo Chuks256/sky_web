@@ -17,7 +17,7 @@ align-items:center;
 justify-content:center;
 background:rgba(16,17,17,40%);
 backdrop-filter:blur(40px);
-height:80px;
+height:90px;
 width:98%;
 display:flex;
 `;
