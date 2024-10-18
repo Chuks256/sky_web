@@ -19,12 +19,12 @@ justify-content:center;
 const PostSubContainer = styled.div`
 display:flex;
 flex-direction:column;
-gap:0.7em;
+gap:0.9em;
 `;
 
 const ProfileContainer = styled.div`
 display:flex;
-gap:15px;
+gap:11px;
 `;
 
 const UserProfilePics = styled.div`
@@ -51,7 +51,7 @@ font-size:9px;
 
 const PostContent = styled.span`
 font-size:12px;
-width:350px;
+width:310px;
 `;
 
 const ReactionContainer = styled.div `
@@ -62,7 +62,7 @@ gap:3em;
 
 const ProfileSubContainer=styled.div`
 display:flex;
-gap:15em;
+justify-content:space-between;
 align-items:center;
 `;
 
