@@ -64,7 +64,7 @@ font-weight:bolder;
 position:fixed;
 margin-top:460px;
 color:ivory;
-margin-left:300px;
+margin-left:260px;
 `;
 
 
