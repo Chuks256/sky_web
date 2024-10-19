@@ -74,7 +74,7 @@ gap:10em;
 const MediaContent = styled.div`
 background:grey;
 padding:20px;
-border-radius:5px;
+border-radius:15px;
 width:180px;
 height:180px;
 background-position:center;

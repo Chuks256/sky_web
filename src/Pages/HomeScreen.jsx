@@ -34,6 +34,8 @@ const UserProfilePics=styled.div`
 padding:20px;
 background:grey;
 border-radius:100px;
+border-style:solid;
+border-color:ivory;
 `;
 const UserPointBalance =styled.div`
 padding:10px;
