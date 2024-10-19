@@ -55,8 +55,8 @@ padding-top:80px;
 
 const PostButton=styled.button`
 background:var(--sky-default-color);
-padding:13px;
-width:100px;
+padding:12px;
+width:80px;
 font-size:14px;
 border-radius:100px;
 z-index:1;
