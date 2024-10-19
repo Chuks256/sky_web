@@ -8,6 +8,7 @@ import {useState} from "react"
 // import components 
 import BottomNavigation from "../Components/BottomNavigation";
 import PostModal from "../Components/Post.modal";
+import PointBalanceModal from "../Components/PointBalance.modal";
 
 const Container = styled.div`
 display:flex;
@@ -160,9 +161,10 @@ const HomeScreen=()=>{
     ]
 
     return(
+        <>
+        {/* <PointBalanceModal /> */}
         <Container>
             {/* Header  */}
-
             {/* Header */}
             <AppBarHeader>
 
@@ -192,6 +194,7 @@ const HomeScreen=()=>{
             {/* Bottom Navigaion */}
             <BottomNavigation />
         </Container>
+        </>
     )
 }
 

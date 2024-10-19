@@ -36,7 +36,7 @@ gap:0.8em;
 `;
 
 const UserProfilePics = styled.div`
-background:grey;
+background:var(--sky-preference-bg-shade-color);
 padding:16px;
 width:4px;
 height:4px;
@@ -79,7 +79,7 @@ gap:10em;
 `;
 
 const MediaContent = styled.div`
-background:grey;
+background:var(--sky-preference-bg-shade-color);
 padding:20px;
 border-radius:6px;
 width:180px;
