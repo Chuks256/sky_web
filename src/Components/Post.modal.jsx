@@ -15,10 +15,17 @@ z-index:1;
 flex-direction:column;
 gap:9px;
 align-items:center;
+padding:15px;
+border-style:solid;
+border-top-color:transparent;
+border-left-color:transparent;
+border-right-color:transparent;
+border-width:1px;
+border-bottom-color:var(--sky-preference-bg-shade-color)
 `
 const ParentContainer=styled.div`
 display:flex;
-padding-top:30px;
+padding-top:10px;
 flex-direction:column;
 `
 
