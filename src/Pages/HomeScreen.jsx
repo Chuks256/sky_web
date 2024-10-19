@@ -53,6 +53,21 @@ flex-direction:column;
 padding-top:80px;
 `
 
+const PostButton=styled.button`
+background:var(--sky-default-color);
+padding:13px;
+width:100px;
+font-size:14px;
+border-radius:100px;
+z-index:1;
+font-weight:bolder;
+position:fixed;
+margin-top:460px;
+color:ivory;
+margin-left:300px;
+`;
+
+
 const HomeScreen=()=>{
     const [skyPoint,setSkyPointBalance]=useState("20k Sky")
     
@@ -131,8 +146,8 @@ const HomeScreen=()=>{
                 }
            
             </PostParentContainer>
-           
-            
+
+            <PostButton>Post</PostButton>
 
             {/* Bottom Navigaion */}
             <BottomNavigation />
