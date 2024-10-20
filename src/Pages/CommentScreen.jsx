@@ -21,7 +21,7 @@ top:0px;
 align-items:center;
 justify-content:center;
 gap:6em;
-margin-left:-30px;
+margin-left:-29px;
 position:fixed;
 z-index:2;
 background:rgba(16,17,17,40%);
