@@ -14,10 +14,10 @@ function App() {
       <div>
       <Routes>
       <Route  path='/app' element={<SplashScreen/>} />
-      <Route exact path='/' element={<HomeScreen/>} />
+      <Route  path='/home' element={<HomeScreen/>} />
       <Route path='/tasks' element={<TaskScreen/>} />
       <Route path='/comment/:postid' element={<CommentScreen/>} />
-      <Route path='/profile' element={<ProfileScreen/>} />
+      <Route path='/' element={<ProfileScreen/>} />
       <Route path='/createPost' element={<CreatePostScreen/>} />
       <Route path='/frens' element={<FrensScreen/>} />
     </Routes>
