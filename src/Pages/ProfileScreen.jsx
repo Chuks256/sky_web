@@ -22,13 +22,19 @@ align-items:center;
 
 const ProfileHeaderContainer=styled.div`
 display:flex;
-padding:25px;
+padding:22px;
 align-items:center;
 justify-content:center;
 gap:7em;
+position:fixed;
+z-index:2;
+background:rgba(16,17,17,40%);
+backdrop-filter:blur(10px);
+width:100%;
 `;
 
 const ProfileUserDataContainer = styled.div`
+padding-top:70px;
 display:flex;
 justify-content:center;
 align-items:center;

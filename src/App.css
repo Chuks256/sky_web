@@ -14,7 +14,8 @@
   --sky-preference-fire-shade:rgba(255,46,46,45%);
   --sky-preference-royal-color:linear-gradient(to bottom, #E02EFF,rgba(16 ,17, 17, 0%)  );
   --sky-preference-summer-color:linear-gradient(to bottom, #FFE02E,rgba(16 ,17, 17, 0%)  );
-  --sky-preference-bg-shade-color:#191A1A;
+  --sky-preference-bg-shade-color:#191a1a;
+  --sky-preference-bg-modified-shade-color:rgba(25, 26, 26, 0.973);
   --sky-text-size:12px;
 }
 
