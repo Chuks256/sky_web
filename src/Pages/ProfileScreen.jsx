@@ -23,14 +23,14 @@ display:flex;
 padding:25px;
 align-items:center;
 justify-content:center;
-gap:7.8em;
+gap:7em;
 `;
 
 const ProfileUserDataContainer = styled.div`
 display:flex;
 justify-content:center;
 align-items:center;
-gap:3em;
+gap:2em;
 `;
 
 const ProfileUserPics=styled.div`
@@ -39,8 +39,8 @@ background:var(--sky-preference-bg-shade-color);
 border-radius:100px;
 border-style:solid;
 border-color:ivory;
-width:40px;
-height:40px;
+width:20px;
+height:20px;
 border-width:2px;
 `;
 
@@ -59,7 +59,7 @@ line-height:15px;
 
 const StatsParentContainer = styled.div`
 display:flex;
-gap:3em;
+gap:1.5em;
 align-items:center;
 margin-top:-30px;
 `;
