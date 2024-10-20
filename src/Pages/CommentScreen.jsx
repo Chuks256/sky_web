@@ -155,13 +155,13 @@ const CommentScreen=()=>{
             </CommentHeader>
 
             {/* Post section */}
-                    <PostContainer>
+                    {/* <PostContainer>
             {
                     dummyData.map((data)=>(
                         <PostModal revealPost="flex" postimage={data.postimage} username={data.username} timestamp={data.timestamp} postcontent={data.postcontent} />
                     ))
                 }
-            </PostContainer>
+            </PostContainer> */}
 
             {/* comment section */}
             <CommentSection>
