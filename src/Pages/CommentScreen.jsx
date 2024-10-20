@@ -79,16 +79,14 @@ const CommentContent=styled.div`
 font-size:13px;
 padding:13px;
 padding-top:12px;
-width:230px;
+width:270px;
 `;
 
 const CommentReactionContainer = styled.div`
 display:flex;
 align-items:center;
 gap:3em;
-padding-top:5px;
-padding-right:-25px;
-
+margin-left:20px;
 `;
 
 const CommentSection = styled.div`
@@ -152,15 +150,6 @@ const CommentScreen=()=>{
                 <CommentTxt>Comments</CommentTxt>
                 <SlOptionsVertical/>
             </CommentHeader>
-
-            {/* Post section */}
-                    {/* <PostContainer>
-            {
-                    dummyData.map((data)=>(
-                        <PostModal revealPost="flex" postimage={data.postimage} username={data.username} timestamp={data.timestamp} postcontent={data.postcontent} />
-                    ))
-                }
-            </PostContainer> */}
 
             {/* comment section */}
             <CommentSection>
