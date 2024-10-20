@@ -20,7 +20,7 @@ padding:20px;
 top:0px;
 align-items:center;
 justify-content:center;
-gap:7em;
+gap:5em;
 position:fixed;
 z-index:2;
 background:rgba(16,17,17,40%);
