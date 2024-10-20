@@ -70,7 +70,7 @@ line-height:15px;
 
 const StatsParentContainer = styled.div`
 display:flex;
-gap:1.5em;
+gap:1em;
 align-items:center;
 margin-top:-35px;
 `;
