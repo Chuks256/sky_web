@@ -12,6 +12,7 @@ display:flex;
 flex-direction:column;
 gap:1em;
 justify-content:center;
+align-items:center;
 `;
 
 const CommentHeader=styled.div`
@@ -87,7 +88,7 @@ display:flex;
 align-items:center;
 gap:3em;
 padding-top:5px;
-padding-right:60px;
+padding-right:-25px;
 
 `;
 
