@@ -146,8 +146,8 @@ const CommentScreen=()=>{
     return(
         <Container>
             <CommentHeader>
-                <IoArrowBack/>
-                <CommentTxt>Comments</CommentTxt>
+                <IoArrowBack size={20}/>
+                <CommentTxt >Comments</CommentTxt>
                 <SlOptionsVertical/>
             </CommentHeader>
 
