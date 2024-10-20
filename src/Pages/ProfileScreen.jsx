@@ -23,7 +23,7 @@ display:flex;
 padding:25px;
 align-items:center;
 justify-content:center;
-gap:7em;
+gap:7.8em;
 `;
 
 const ProfileUserDataContainer = styled.div`
