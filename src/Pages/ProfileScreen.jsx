@@ -6,7 +6,9 @@ import { SlOptionsVertical } from "react-icons/sl";
 import BottomNavigation from "../Components/BottomNavigation";
 
 
-const Container = styled.div``;
+const Container = styled.div`
+overflow-x:hidden;
+`;
 
 const AppBarHeader= styled.div`
 position:absolute;
@@ -22,13 +24,14 @@ align-items:center;
 
 const ProfileHeaderContainer=styled.div`
 display:flex;
-padding:22px;
+padding:20px;
+top:0px;
 align-items:center;
 justify-content:center;
 gap:7em;
 position:fixed;
 z-index:2;
-background:rgba(16,17,17,40%);
+background:var(--sky-preference-bg-modified-shade-color);
 backdrop-filter:blur(10px);
 width:100%;
 `;
