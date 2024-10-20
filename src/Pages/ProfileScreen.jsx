@@ -39,8 +39,8 @@ background:var(--sky-preference-bg-shade-color);
 border-radius:100px;
 border-style:solid;
 border-color:ivory;
-width:20px;
-height:20px;
+width:30px;
+height:30px;
 border-width:2px;
 `;
 
@@ -61,7 +61,7 @@ const StatsParentContainer = styled.div`
 display:flex;
 gap:1.5em;
 align-items:center;
-margin-top:-30px;
+margin-top:-35px;
 `;
 
 const StatsSubContainer = styled.div`
@@ -85,11 +85,11 @@ font-size:13px;
 `;
 
 const FollowProfileBtn=styled.button`
-padding:10px;
+padding:12px;
 background:ivory;
 color:var(--sky-bg-theme);
 margin-top:25px;
-width:360px;
+width:290px;
 font-weight:bold;
 font-size:12px;
 border-radius:7px;
