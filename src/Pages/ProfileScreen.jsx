@@ -107,7 +107,7 @@ border-radius:7px;
 `;
 
 const PostContainer = styled.div `
-padding-top:20px;
+padding-top:10px;
 `;
 
 const ProfileScreen=()=>{
