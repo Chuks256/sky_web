@@ -94,12 +94,14 @@ const CommentSection = styled.div`
 display:flex;
 flex-direction:column;
 gap:2em;
-margin-left:110px;
+justify-content:center;
+align-items:center;
 padding:1px;
 `;
 
 const CommentBodyTxt = styled.b`
 font-size:12px;
+margin-left:-200px;
 `;
 
 
