@@ -17,7 +17,7 @@ align-items:center;
 justify-content:center;
 background:rgba(16,17,17,40%);
 backdrop-filter:blur(10px);
-height:90px;
+height:70px;
 width:98%;
 display:flex;
 overflow-y:hidden;
