@@ -102,7 +102,7 @@ const ProfileScreen=()=>{
             <AppBarHeader>
                 {/* profile header */}
                 <ProfileHeaderContainer>
-                    <IoArrowBack style={{cursor:"pointer"}} size={20} />
+                    <IoArrowBack style={{cursor:"pointer"}} size={25} />
                     <ProfileUserName>Degen</ProfileUserName>
                     <SlOptionsVertical style={{cursor:"pointer"}} size={20}/>
                 </ProfileHeaderContainer>
