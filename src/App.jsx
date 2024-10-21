@@ -15,10 +15,10 @@ function App() {
       <Routes>
       <Route  path='/app' element={<SplashScreen />} />
       <Route  path='/home' element={<HomeScreen/>} />
-      <Route path='/tasks' element={<TaskScreen/>} />
+      <Route exact path='/' element={<TaskScreen />} />
       <Route path='/comment' element={<CommentScreen/>} />
       <Route path='/profile' element={<ProfileScreen/>} />
-      <Route exact path='/' element={<CreatePostScreen/>} />
+      <Route path='/createRant' element={<CreatePostScreen/>} />
       <Route path='/frens' element={<FrensScreen/>} />
     </Routes>
     </div>
