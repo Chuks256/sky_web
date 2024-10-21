@@ -35,13 +35,13 @@ background:var(--sky-preference-bg-shade-color);
 border-radius:100px;
 display:flex;
 align-items:center;
-justify-content:center;
+width:250px;
 `;
 
 const CompletedTask = styled.button`
 background:var(--sky-preference-bg-shade-color);
 padding:10px;
-width:100px;
+width:120px;
 border-radius:100px;
 color:ivory;
 font-size:12px;
@@ -50,7 +50,7 @@ font-size:12px;
 const ActiveTask = styled.button`
 background:ivory;
 padding:10px;
-width:100px;
+width:120px;
 border-radius:100px;
 font-weight:bold;
 font-size:12px;
@@ -60,6 +60,7 @@ const TaskParentContainer = styled.div`
 padding:60px;
 display:flex;
 flex-direction:column;
+align-items:center
 `;
 
  const TaskContainer = styled.div``;
@@ -70,6 +71,7 @@ flex-direction:column;
  padding-top:200px;
  font-size:16px;
 color:grey;
+text-align:center;
  `;
 
 const TaskScreen=()=>{
