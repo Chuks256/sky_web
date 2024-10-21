@@ -16,9 +16,9 @@ function App() {
       <Route  path='/app' element={<SplashScreen />} />
       <Route  path='/home' element={<HomeScreen/>} />
       <Route path='/tasks' element={<TaskScreen/>} />
-      <Route path='/' element={<CommentScreen/>} />
+      <Route path='/comment' element={<CommentScreen/>} />
       <Route path='/profile' element={<ProfileScreen/>} />
-      <Route path='/createPost' element={<CreatePostScreen/>} />
+      <Route exact path='/' element={<CreatePostScreen/>} />
       <Route path='/frens' element={<FrensScreen/>} />
     </Routes>
     </div>
