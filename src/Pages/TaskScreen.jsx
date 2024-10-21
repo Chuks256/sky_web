@@ -33,12 +33,15 @@ const TaskOptionContainer = styled.div`
 padding:8px;
 background:var(--sky-preference-bg-shade-color);
 border-radius:100px;
+display:flex;
+align-items:center;
+justify-content:center;
 `;
 
 const CompletedTask = styled.button`
 background:var(--sky-preference-bg-shade-color);
 padding:10px;
-width:150px;
+width:100px;
 border-radius:100px;
 color:ivory;
 font-size:12px;
@@ -47,7 +50,7 @@ font-size:12px;
 const ActiveTask = styled.button`
 background:ivory;
 padding:10px;
-width:150px;
+width:100px;
 border-radius:100px;
 font-weight:bold;
 font-size:12px;
