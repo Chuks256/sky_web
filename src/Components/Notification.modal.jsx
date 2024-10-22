@@ -3,24 +3,25 @@ import {styled} from "styled-components";
 import skysplash from "../assets/skysplash.png"
 
 const Container=styled.div`
-position:absolute;
+position:relative;
 z-index:3;
 margin-top:0px;
 display:flex;
 align-items:center;
 justify-content:center;
 transition:linear,700ms;
-top:20px;
+top:50px;
 `;
 
 const NotificationParentContainer =styled.div`
+position:absolute;
 padding:10px;
 border-radius:15px;
 background:rgba(9,9,7,30%);
 backdrop-filter:blur(10px);
 display:flex;
 align-items:center;
-width:250px;
+width:220px;
 gap:10px;
 margin-left:9px;
 `;
