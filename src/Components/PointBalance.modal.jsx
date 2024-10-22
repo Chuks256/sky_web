@@ -3,42 +3,44 @@ import styled from "styled-components";
 import { useState } from "react";
 
 const Container = styled.div`
-position:relative;
-z-index:3;
-margin-top:0px;
-display:flex;
-align-items:center;
-justify-content:center;
-transition:linear,700ms;
-top:450px;
+position:absolute;
+width:100%;
+height:100%;
+top:0px;
+left:0px;
+background:rgba(217,217,217,31%);
+backdrop-filter:blur(4px);
+z-index:2;
+overflow-y:hidden;
 `;
 
 const BalanceParentContainer =styled.div`
+background:var(--sky-bg-theme);
+bottom:0px;
+width:100%;
+height:70%;
+border-radius:30px 30px 0px 0px;
 position:absolute;
-padding:50px;
-border-radius:15px;
-background:rgba(24, 24, 24, 50%);
-backdrop-filter:blur(10px);
+right:0px;
+left:0px;
 display:flex;
 flex-direction:column;
-width:250px;
-height:150px;
-gap:10px;
-margin-left:9px;
+justify-content:center;
+align-items:center;
+gap:7em;
 `;
 
 const BalanceAmountContainer = styled.div`
 display:flex;
 flex-direction:column;
-margin-top:-40px;
-margin-left:-20px;
+justify-content:center;
+margin-top:-100px;
 `;
 
 const BalanceHeaderTxt = styled.h3`
 font-size:13px;
 `;
 
-const MainContainer =styled.div``;
 
 const AmountElemContainer = styled.div`
 display:flex;
@@ -57,7 +59,7 @@ display:flex;
 const ConnectWalletContainer = styled.div`
 display:flex;
 flex-direction:column;
-margin-left:-15px;
+margin-left:0px;
 `;
 
 const ConnectWalletTxt=styled.h3`
@@ -91,6 +93,7 @@ const PointBalanceModal=()=>{
                     <ConnectWalletTxt>Connect Wallet</ConnectWalletTxt>
                     <ConnectWalletBtn style={{cursor:"disabled"}}>Coming Soon</ConnectWalletBtn>
                 </ConnectWalletContainer>
+      
             </BalanceParentContainer>
             
         </Container>

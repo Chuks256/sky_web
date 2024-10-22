@@ -25,7 +25,6 @@ right:0px;
 left:0px;
 display:flex;
 justify-content:center;
-
 `;
 
 const IntroAuthHeaderContainer=styled.div`
