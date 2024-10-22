@@ -45,7 +45,7 @@ background:;
 padding:10px;
 width:120px;
 border-radius:100px;
-font-size:12px;
+font-size:13px;
 font-weight:bold;
 `;
 
@@ -55,7 +55,7 @@ padding:10px;
 width:120px;
 color:ivory;
 border-radius:100px;
-font-size:12px;
+font-size:13px;
 `;
 
 const FrenParentContainer = styled.div`
