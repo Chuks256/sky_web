@@ -10,7 +10,7 @@ display:flex;
 align-items:center;
 justify-content:center;
 transition:linear,700ms;
-top:50px;
+top:-100px;
 `;
 
 const NotificationParentContainer =styled.div`
@@ -52,7 +52,7 @@ font-size:12px;
 
 const NotificationModal=(props)=>{
     return(
-        <Container style={{marginTop:`${props.position}`}}>
+        <Container style={{top:`${props.position}`}}>
             <NotificationParentContainer>
             <NotificationBadgeImg></NotificationBadgeImg>
         <NotificationTxtContainer>
