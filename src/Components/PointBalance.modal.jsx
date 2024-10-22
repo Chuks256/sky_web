@@ -3,35 +3,90 @@ import styled from "styled-components";
 import { useState } from "react";
 
 const Container = styled.div`
-position:absolute;
-width:100%;
-height:100%;
-top:0px;
-left:0px;
-background:rgba(217,217,217,31%);
-backdrop-filter:blur(4px);
-z-index:2;
+position:relative;
+z-index:3;
+margin-top:0px;
+display:flex;
+align-items:center;
+justify-content:center;
+transition:linear,700ms;
+top:450px;
 `;
 
-const PointBalanceBottomSheet=styled.div`
-background:var(--sky-bg-theme);
-bottom:0px;
-width:100%;
-height:80%;
-border-radius:30px 30px 0px 0px;
+const BalanceParentContainer =styled.div`
 position:absolute;
-right:0px;
-left:0px;
+padding:50px;
+border-radius:15px;
+background:rgba(20, 20, 20, 60%);
+backdrop-filter:blur(10px);
 display:flex;
-justify-content:center;
+flex-direction:column;
+width:250px;
+height:150px;
+gap:10px;
+margin-left:9px;
+`;
+
+const BalanceAmountContainer = styled.div`
+display:flex;
+flex-direction:column;
+margin-top:-40px;
+margin-left:-20px;
+`;
+
+const BalanceHeaderTxt = styled.h3`
+font-size:13px;
+`;
+
+const MainContainer =styled.div``;
+
+const AmountElemContainer = styled.div`
+display:flex;
+padding:29px;
+border-radius:5px;
+background:var(--sky-preference-bg-shade-color);
+width:250px;
+margin-top:-5px;
 `
+
+const AmountSubContainer = styled.div`
+display:flex;
+`;
+
+
+const ConnectWalletContainer = styled.div`
+display:flex;
+flex-direction:column;
+margin-left:-15px;
+`;
+
+const ConnectWalletTxt=styled.h3`
+font-size:13px;
+`
+
+const ConnectWalletBtn = styled.button`
+
+`;
+
+
+
 
 
 const PointBalanceModal=()=>{
     
     return(
         <Container >
-            <PointBalanceBottomSheet></PointBalanceBottomSheet>    
+            <BalanceParentContainer>
+                <BalanceAmountContainer>
+                    <BalanceHeaderTxt>Point Balance</BalanceHeaderTxt>
+                    <AmountElemContainer></AmountElemContainer>
+                </BalanceAmountContainer>
+
+                <ConnectWalletContainer>
+                    <ConnectWalletTxt>Connect Wallet</ConnectWalletTxt>
+                </ConnectWalletContainer>
+            </BalanceParentContainer>
+            
         </Container>
     )
 }
