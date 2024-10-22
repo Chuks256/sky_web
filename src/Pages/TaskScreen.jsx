@@ -4,6 +4,7 @@ import { IoArrowBack } from "react-icons/io5";
 import { SlOptionsVertical } from "react-icons/sl";
 import { TbPhotoFilled } from "react-icons/tb";
 import BottomNavigation from "../Components/BottomNavigation";
+import NotificationModal from "../Components/Notification.modal";
 
 const Container = styled.div`
 display:flex;
@@ -78,6 +79,7 @@ const TaskScreen=()=>{
     const taskdummyData=[]
     return(
         <>
+        <NotificationModal />
            <Container>
              <TaskHeader>
                 <IoArrowBack size={20}/>
