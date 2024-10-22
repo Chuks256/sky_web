@@ -17,7 +17,7 @@ const NotificationParentContainer =styled.div`
 position:absolute;
 padding:10px;
 border-radius:15px;
-background:rgba(9,9,7,30%);
+background:rgba(20, 20, 20, 60%);
 backdrop-filter:blur(10px);
 display:flex;
 align-items:center;
