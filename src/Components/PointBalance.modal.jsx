@@ -17,7 +17,7 @@ const BalanceParentContainer =styled.div`
 position:absolute;
 padding:50px;
 border-radius:15px;
-background:rgba(20, 20, 20, 60%);
+background:rgba(24, 24, 24, 50%);
 backdrop-filter:blur(10px);
 display:flex;
 flex-direction:column;
@@ -65,7 +65,12 @@ font-size:13px;
 `
 
 const ConnectWalletBtn = styled.button`
-
+padding:15px;
+background:ivory;
+font-weight:bold;
+font-size:12px;
+border-radius:5px;
+width:300px;
 `;
 
 
@@ -84,6 +89,7 @@ const PointBalanceModal=()=>{
 
                 <ConnectWalletContainer>
                     <ConnectWalletTxt>Connect Wallet</ConnectWalletTxt>
+                    <ConnectWalletBtn style={{cursor:"disabled"}}>Coming Soon</ConnectWalletBtn>
                 </ConnectWalletContainer>
             </BalanceParentContainer>
             
