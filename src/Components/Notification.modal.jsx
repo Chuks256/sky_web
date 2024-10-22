@@ -21,7 +21,7 @@ background:rgba(9,9,7,30%);
 backdrop-filter:blur(10px);
 display:flex;
 align-items:center;
-width:220px;
+width:250px;
 gap:10px;
 margin-left:9px;
 `;
