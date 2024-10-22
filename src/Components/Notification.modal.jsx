@@ -5,7 +5,6 @@ import skysplash from "../assets/skysplash.png"
 const Container=styled.div`
 position:absolute;
 z-index:3;
-margin-left:100px;
 margin-top:0px;
 display:flex;
 align-items:center;
