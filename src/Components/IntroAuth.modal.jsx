@@ -143,11 +143,12 @@ color:ivory
 const CloseContainer =styled.div`
 display:flex;
 align-items:center;
-justify-content:space-between;
+gap:9em;
 `;
 
 const CloseTxt=styled.b`
 font-size:14px;
+cursor:pointer;
 `;
 
 const IntroAuthModal=(props)=>{
