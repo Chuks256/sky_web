@@ -143,7 +143,7 @@ color:ivory
 const CloseContainer =styled.div`
 display:flex;
 align-items:center;
-gap:9em;
+gap:11em;
 `;
 
 const CloseTxt=styled.b`
