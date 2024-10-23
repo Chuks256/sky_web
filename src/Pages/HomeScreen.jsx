@@ -162,7 +162,7 @@ const HomeScreen=()=>{
 
     return(
         <>
-        <PointBalanceModal />
+        {/* <PointBalanceModal /> */}
         <Container>
             {/* Header  */}
             {/* Header */}
