@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import skysplash from "../assets/skysplash.png"
 import SkyCircle from "../assets/SkyCircle.png"
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 //  import components 
 import AuthenticationModal from "../Components/Authentication.modal"
 import IntroAuthModal from "../Components/IntroAuth.modal";
 import ErrorModal from "../Components/Error.modal";
+
 
 const Container = styled.div`
 width:100%;
@@ -77,11 +80,42 @@ transform:scale(85%);
 
 
 const SplashScreen=()=>{
+    const [ctaBtnState,setctaBtnState]=useState("Start Ranting")
+    const [private_key,setPrivate_key]=useState("");
+    const [revealAuthModal,setRevealAuthModal]=useState("none");
+    const [revealIntroModal,setRevealIntroModal]=useState("none");
+    const [revealErrorModal,setRevealErrorModal]=useState({
+        msg:"",
+        mode:"none"
+    });
+    const navigate=useNavigate();
+
+
+    // initialize auth and intro bottomsheet modal 
+    const InitializeRantBtn=(event)=>{
+        // check if localstorage is null or not 
+        const getUserSessionKey=localStorage.getItem("_Authorization");
+        if(getUserSessionKey===null || getUserSessionKey.length===0){
+              event.stopPropagation()
+             return setRevealIntroModal("flex");
+        }
+        else{
+            navigate("/app")
+        }
+    }
+
+   
+
+    // function for closing bottomsheet 
+    const CloseModal=()=>{
+        setRevealIntroModal("none")
+    }
+
     return(
-        <Container>
-            <ErrorModal reveal='none' />
-            <IntroAuthModal showModal="none" />
-            <AuthenticationModal reveal="none" />
+        <Container onClick={CloseModal}>
+            <ErrorModal reveal={revealErrorModal.mode} errorMsg={revealErrorModal.msg}/>
+            <IntroAuthModal  privateKey={private_key} showModal={revealIntroModal} />
+            <AuthenticationModal reveal={revealAuthModal} />
             {/* Define splash parent container  */}
             <SplashScreenParentContainer>
                 <LogoParentContainer>
@@ -92,7 +126,7 @@ const SplashScreen=()=>{
                 {/* Splash cta container */}
                 <SplashCtaParentContainer>
                     <CtaTxtDetails>Rant freely about anything , anytime anonymously</CtaTxtDetails>
-                    <CtaButton>Start Ranting</CtaButton>
+                    <CtaButton onClick={InitializeRantBtn}>{ctaBtnState}</CtaButton>
                 </SplashCtaParentContainer>
 
             </SplashScreenParentContainer>

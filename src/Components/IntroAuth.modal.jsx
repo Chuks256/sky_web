@@ -141,9 +141,8 @@ color:ivory
 
 
 const IntroAuthModal=(props)=>{
-    const[private_key,setPrivate_key]=useState("n455niirvrnfrfinrifnrfirfrfrf");
     const [copyTxt,setCopyTxt]=useState("Copy");
-   
+
     const AmbientColor=[
         {
             id:1,
@@ -186,7 +185,7 @@ const IntroAuthModal=(props)=>{
                     <PrivateKeyParentContainer>
 
                         <PrivateKeyTxtParentContainer>
-                            <PrivateKeyData>{private_key}</PrivateKeyData>
+                            <PrivateKeyData>{props.privateKey}</PrivateKeyData>
                             <CopyBtn>{copyTxt}</CopyBtn>
                         </PrivateKeyTxtParentContainer>
 

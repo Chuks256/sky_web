@@ -13,8 +13,8 @@ function App() {
     <>
       <div>
       <Routes>
-      <Route  path='/app' element={<SplashScreen />} />
-      <Route  path='/' element={<HomeScreen/>} />
+      <Route  path='/' element={<SplashScreen />} />
+      <Route  path='/app' element={<HomeScreen/>} />
       <Route path='/task' element={<TaskScreen />} />
       <Route path='/comment' element={<CommentScreen/>} />
       <Route path='/profile' element={<ProfileScreen/>} />
