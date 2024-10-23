@@ -112,7 +112,7 @@ const SplashScreen=()=>{
     }
 
     return(
-        <Container onClick={CloseModal}>
+        <Container >
             <ErrorModal reveal={revealErrorModal.mode} errorMsg={revealErrorModal.msg}/>
             <IntroAuthModal  privateKey={private_key} showModal={revealIntroModal} />
             <AuthenticationModal reveal={revealAuthModal} />

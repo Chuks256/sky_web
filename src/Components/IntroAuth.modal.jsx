@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useState } from "react";
 
@@ -115,7 +115,7 @@ padding-top:30px;
 const ButtonInnerParentContainer=styled.div`
 display:flex;
 flex-direction:column;
-gap:15px;
+gap:13px;
 `;
 
 const ButtonTxtElem = styled.p`
@@ -140,8 +140,23 @@ color:ivory
 `;
 
 
+const CloseContainer =styled.div`
+display:flex;
+align-items:center;
+justify-content:space-between;
+`;
+
+const CloseTxt=styled.b`
+font-size:14px;
+`;
+
 const IntroAuthModal=(props)=>{
     const [copyTxt,setCopyTxt]=useState("Copy");
+    const [revealModal,setRevealModal]=useState(props.showModal);
+
+    useEffect(()=>{
+        setRevealModal(props.showModal)
+    })
 
     const AmbientColor=[
         {
@@ -170,14 +185,21 @@ const IntroAuthModal=(props)=>{
         }
     ]
 
+    const CloseIntroAuthContainer=(ev)=>{
+        ev.stopPropagation();
+    }
+
     return(
-        <Container style={{display:`${props.showModal}`}}>    
+        <Container  style={{display:`${revealModal}`}}>    
             <IntroAuthBottomSheet>
                 <IntroAuthHeaderContainer>
                     
                     {/* header txt */}
                     <IntroHeaderTxtParentContainer>
-                    <IntroAuthHeaderTxt>Your Private Key</IntroAuthHeaderTxt>
+                        <CloseContainer>
+                        <IntroAuthHeaderTxt>Your Private Key</IntroAuthHeaderTxt>
+                        <CloseTxt>Close</CloseTxt>          
+                        </CloseContainer>
                     <IntroAuthDetails>Make sure you keep you private key safe</IntroAuthDetails>
                     </IntroHeaderTxtParentContainer>
 
