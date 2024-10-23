@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useState } from "react";
+import { PiStarFourFill } from "react-icons/pi";
 
 const Container = styled.div`
 position:absolute;
@@ -44,15 +45,23 @@ font-size:13px;
 
 const AmountElemContainer = styled.div`
 display:flex;
-padding:29px;
-border-radius:5px;
+border-radius:7px;
 background:var(--sky-preference-bg-shade-color);
 width:250px;
+height:40px;
+align-items:center;
 margin-top:-5px;
+padding:12px;
 `
 
 const AmountSubContainer = styled.div`
 display:flex;
+gap:10px;
+align-items:center;
+`;
+
+const AmountMainContainer = styled.div`
+font-size:14px;
 `;
 
 
@@ -86,7 +95,12 @@ const PointBalanceModal=()=>{
             <BalanceParentContainer>
                 <BalanceAmountContainer>
                     <BalanceHeaderTxt>Point Balance</BalanceHeaderTxt>
-                    <AmountElemContainer></AmountElemContainer>
+                    <AmountElemContainer>
+                        <AmountSubContainer>
+                            <PiStarFourFill size={22}/>
+                            <AmountMainContainer>25 sky</AmountMainContainer>
+                        </AmountSubContainer>
+                    </AmountElemContainer>
                 </BalanceAmountContainer>
 
                 <ConnectWalletContainer>
