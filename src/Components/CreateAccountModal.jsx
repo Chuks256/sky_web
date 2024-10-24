@@ -65,26 +65,22 @@ const ProfileImageParentContainer = styled.div`
 `;
 
 const ProfileImageSubContainer = styled.div`
-display: grid;
-grid-template-columns: repeat(3, 1fr);
-grid-gap:18px;
-padding-top:20px;
-padding:30px;
-margin-top:15px;
-width:230px;
-height:250px;
-align-items:center;
-justify-content:center;
-overflow-y:scroll;
-overflow-x:hidden;
+margin-top:20px;
+ display: grid;
+grid-template-columns: repeat(10, 1fr);
+width:210px;
+overflow-x:scroll;
+overflow-y:hidden;
+padding:0px;
+gap:10px;
 `;
 
 const ProfileImgElem=styled.div`
 background:var(--sky-preference-bg-shade-color);
-border-radius:100px;
-padding:15px;
-height:40px;
+padding:20px;
 width:40px;
+height:40px;
+border-radius:100px;
 border-style:solid;
 border-color:var(--sky-preference-bg-shade-color);
 border-width:2px;
@@ -143,17 +139,11 @@ const CreateAccountModal=(props)=>{
                 {/* image containr  */}
                 <ProfileImageSubContainer>
                 <ProfileImgElem></ProfileImgElem>
-                  <ProfileImgElem></ProfileImgElem>
-                    <ProfileImgElem></ProfileImgElem>
-                      <ProfileImgElem></ProfileImgElem>
-                        <ProfileImgElem></ProfileImgElem>
-                          <ProfileImgElem></ProfileImgElem>
-                            <ProfileImgElem></ProfileImgElem>
-                              <ProfileImgElem></ProfileImgElem>
-                                <ProfileImgElem></ProfileImgElem>
-                                  <ProfileImgElem></ProfileImgElem>
-                                <ProfileImgElem></ProfileImgElem>
-                                <ProfileImgElem></ProfileImgElem>
+                <ProfileImgElem></ProfileImgElem>
+                <ProfileImgElem></ProfileImgElem>
+                <ProfileImgElem></ProfileImgElem>
+                <ProfileImgElem></ProfileImgElem>
+                <ProfileImgElem></ProfileImgElem>         
                 </ProfileImageSubContainer>
 
             </ProfileImageParentContainer>
