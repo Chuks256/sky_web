@@ -34,7 +34,7 @@ line-height:10px;
 `;
 
 const IntroAuthHeaderTxt = styled.h2`
-font-size:13px;
+font-size:12px;
 `;
 
 const IntroAuthDetails = styled.p`
