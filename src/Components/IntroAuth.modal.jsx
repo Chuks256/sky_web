@@ -35,6 +35,7 @@ line-height:10px;
 
 const IntroAuthHeaderTxt = styled.h2`
 font-size:13px;
+width:200px;
 `;
 
 const IntroAuthDetails = styled.p`
