@@ -82,23 +82,25 @@ const AmbientOptionTxtContainer = styled.div`
 display:grid;
 grid-template-columns:repeat(3,1fr);
 gap:1em;
+column-gap:0.3em;
 padding-top:10px;
 `;
 
 const AmbientHeaderTxt = styled.h2`
 font-size:14px;
 `;
-const AmbientOptionCard=styled.div`
-width:70px;
+const AmbientOptionCard=styled.button`
+width:80px;
 justify-content:center;
 font-size:13px;
-padding:15px;
+padding:12px;
 background:var(--sky-preference-bg-shade-color);
 border-radius:5px;
 display:flex;
 cursor:pointer;
 transition:linear,100ms;
-&:hover{
+color:ivory;
+&:focus{
 background:ivory;
 color:var(--sky-bg-theme);
 font-weight:bold;
