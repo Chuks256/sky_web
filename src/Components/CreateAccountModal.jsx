@@ -75,7 +75,7 @@ width:300px;
 overflow-x:scroll;
 overflow-y:hidden;
 padding:0px;
-gap:10px;
+gap:15px;
 `;
 
 const ProfileImgElem=styled.div`
