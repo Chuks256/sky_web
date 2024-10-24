@@ -81,7 +81,10 @@ transform:scale(85%);
 
 const SplashScreen=()=>{
     const [ctaBtnState,setctaBtnState]=useState("Start Ranting")
-    const [private_key,setPrivate_key]=useState("");
+    const [private_key,setPrivate_key]=useState({
+        originalKey:"",
+        truncatedKey:"Generating private key"
+    });
     const [revealAuthModal,setRevealAuthModal]=useState("none");
     const [revealErrorModal,setRevealErrorModal]=useState({
         msg:"",
@@ -91,14 +94,26 @@ const SplashScreen=()=>{
 
 
     // initialize auth and intro bottomsheet modal 
-    const InitializeRantBtn=(event)=>{
+    const InitializeRantBtn=async(event)=>{
         // check if localstorage is null or not 
         const getUserSessionKey=localStorage.getItem("_Authorization");
         if(getUserSessionKey===null || getUserSessionKey.length===0){
               event.stopPropagation()
                 const elem=document.querySelector(".parentContainer");
                  elem.style.display="flex"
-                 
+                 try{
+                    const url="https://sky-node.onrender.com/endpoint/1.0/generatePrivateKey"
+                    const getPrivateKeyFromServer=await fetch(url);
+                    const response =await getPrivateKeyFromServer.json();
+                    const truncatePrivateKey=response.privateKey.substring(0,26)+"...."
+                    setPrivate_key({
+                        originalKey:response.privateKey,
+                        truncatedKey:truncatePrivateKey
+                    });
+                 }
+                 catch(err){
+                    console.log(err)
+                 }
         }
         else{
             navigate("/app")
@@ -109,7 +124,7 @@ const SplashScreen=()=>{
     return(
         <Container >
             <ErrorModal reveal={revealErrorModal.mode} errorMsg={revealErrorModal.msg}/>
-            <IntroAuthModal  privateKey={private_key} />
+            <IntroAuthModal  originalKey={private_key.originalKey} truncatedKey={private_key.truncatedKey}  />
             <AuthenticationModal reveal={revealAuthModal} />
             {/* Define splash parent container  */}
             <SplashScreenParentContainer>

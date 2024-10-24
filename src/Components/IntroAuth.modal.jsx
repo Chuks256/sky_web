@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useState } from "react";
 
 const Container = styled.div`
+display:none;
 position:absolute;
 width:100%;
 height:100%;
@@ -190,7 +191,7 @@ const IntroAuthModal=(props)=>{
 
     const copyTxtFunction=async()=>{
         try {
-            await navigator.clipboard.writeText(props.privateKey);
+            await navigator.clipboard.writeText(props.originalKey);
             setCopyTxt("Copied");
             setTimeout(()=>{
                 setCopyTxt("Copy")
@@ -219,7 +220,7 @@ const IntroAuthModal=(props)=>{
                     <PrivateKeyParentContainer>
 
                         <PrivateKeyTxtParentContainer>
-                            <PrivateKeyData>{props.privateKey}</PrivateKeyData>
+                            <PrivateKeyData>{props.truncatedKey}</PrivateKeyData>
                             <CopyBtn onClick={copyTxtFunction}>{copyTxt}</CopyBtn>
                         </PrivateKeyTxtParentContainer>
 
