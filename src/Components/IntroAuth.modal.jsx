@@ -35,7 +35,6 @@ line-height:10px;
 
 const IntroAuthHeaderTxt = styled.h2`
 font-size:13px;
-width:200px;
 `;
 
 const IntroAuthDetails = styled.p`
@@ -81,7 +80,7 @@ padding-top:35px;
 
 const AmbientOptionTxtContainer = styled.div`
 display:grid;
-grid-template-columns:repeat(3,0.7fr);
+grid-template-columns:repeat(3,1fr);
 gap:10px;
 padding-top:10px;
 `;
@@ -90,10 +89,10 @@ const AmbientHeaderTxt = styled.h2`
 font-size:14px;
 `;
 const AmbientOptionCard=styled.button`
-width:80px;
+width:75px;
 justify-content:center;
 font-size:13px;
-padding:12px;
+padding:11px;
 background:var(--sky-preference-bg-shade-color);
 border-radius:5px;
 display:flex;
