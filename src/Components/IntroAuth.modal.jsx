@@ -228,7 +228,7 @@ const IntroAuthModal=(props)=>{
                     {/* header txt */}
                     <IntroHeaderTxtParentContainer>
                         <CloseContainer>
-                        <IntroAuthHeaderTxt>My Private Key</IntroAuthHeaderTxt>
+                        <IntroAuthHeaderTxt>Private Key</IntroAuthHeaderTxt>
                         <CloseTxt onClick={CloseIntroAuthContainer}>Close</CloseTxt>          
                         </CloseContainer>
                     <IntroAuthDetails>Make sure you keep you private key safe</IntroAuthDetails>
