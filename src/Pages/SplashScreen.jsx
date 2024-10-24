@@ -83,7 +83,6 @@ const SplashScreen=()=>{
     const [ctaBtnState,setctaBtnState]=useState("Start Ranting")
     const [private_key,setPrivate_key]=useState("");
     const [revealAuthModal,setRevealAuthModal]=useState("none");
-    const [revealIntroModal,setRevealIntroModal]=useState("none");
     const [revealErrorModal,setRevealErrorModal]=useState({
         msg:"",
         mode:"none"
@@ -97,24 +96,19 @@ const SplashScreen=()=>{
         const getUserSessionKey=localStorage.getItem("_Authorization");
         if(getUserSessionKey===null || getUserSessionKey.length===0){
               event.stopPropagation()
-             return setRevealIntroModal("flex");
+                const elem=document.querySelector(".parentContainer");
+                 elem.style.display="flex"
         }
         else{
             navigate("/app")
         }
     }
 
-   
-
-    // function for closing bottomsheet 
-    const CloseModal=()=>{
-        setRevealIntroModal("none")
-    }
 
     return(
         <Container >
             <ErrorModal reveal={revealErrorModal.mode} errorMsg={revealErrorModal.msg}/>
-            <IntroAuthModal  privateKey={private_key} showModal={revealIntroModal} />
+            <IntroAuthModal  privateKey={private_key} />
             <AuthenticationModal reveal={revealAuthModal} />
             {/* Define splash parent container  */}
             <SplashScreenParentContainer>

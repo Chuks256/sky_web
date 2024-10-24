@@ -153,11 +153,6 @@ cursor:pointer;
 
 const IntroAuthModal=(props)=>{
     const [copyTxt,setCopyTxt]=useState("Copy");
-    const [revealModal,setRevealModal]=useState(props.showModal);
-
-    useEffect(()=>{
-        setRevealModal(props.showModal)
-    })
 
     const AmbientColor=[
         {
@@ -188,10 +183,12 @@ const IntroAuthModal=(props)=>{
 
     const CloseIntroAuthContainer=(ev)=>{
         ev.stopPropagation();
+        const elem=document.querySelector(".parentContainer");
+        elem.style.display="none"
     }
 
     return(
-        <Container  style={{display:`${revealModal}`}}>    
+        <Container className="parentContainer">    
             <IntroAuthBottomSheet>
                 <IntroAuthHeaderContainer>
                     
@@ -199,7 +196,7 @@ const IntroAuthModal=(props)=>{
                     <IntroHeaderTxtParentContainer>
                         <CloseContainer>
                         <IntroAuthHeaderTxt>Your Private Key</IntroAuthHeaderTxt>
-                        <CloseTxt>Close</CloseTxt>          
+                        <CloseTxt onClick={CloseIntroAuthContainer}>Close</CloseTxt>          
                         </CloseContainer>
                     <IntroAuthDetails>Make sure you keep you private key safe</IntroAuthDetails>
                     </IntroHeaderTxtParentContainer>
