@@ -34,7 +34,7 @@ line-height:10px;
 `;
 
 const IntroAuthHeaderTxt = styled.h2`
-font-size:14px;
+font-size:13px;
 `;
 
 const IntroAuthDetails = styled.p`
@@ -80,7 +80,7 @@ padding-top:35px;
 
 const AmbientOptionTxtContainer = styled.div`
 display:grid;
-grid-template-columns:repeat(3,1fr);
+grid-template-columns:repeat(3,0.7fr);
 gap:10px;
 padding-top:10px;
 `;
