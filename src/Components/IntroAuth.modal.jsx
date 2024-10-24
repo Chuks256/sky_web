@@ -155,6 +155,7 @@ cursor:pointer;
 
 const IntroAuthModal=(props)=>{
     const [copyTxt,setCopyTxt]=useState("Copy");
+    const [SelectedItem,setSelectedItem]=useState(null)
 
     const AmbientColor=[
         {
@@ -203,6 +204,22 @@ const IntroAuthModal=(props)=>{
           }
     }
 
+    // function for getting color type onclick 
+    const getColorType=(data)=>{
+        setSelectedItem(data);
+    }
+
+    // fucntion for creating user account
+    const createUserAccount=(ev)=>{
+        ev.stopPropagation();
+        alert(SelectedItem)
+    } 
+
+    // function for importing account 
+    const ImportUserAccount=(ev)=>{
+        ev.stopPropagation()
+    }
+
     return(
         <Container className="parentContainer">    
             <IntroAuthBottomSheet>
@@ -233,7 +250,7 @@ const IntroAuthModal=(props)=>{
                         <AmbientOptionTxtContainer>
                             {
                                 AmbientColor.map((colors)=>(
-                                    <AmbientOptionCard>{colors.type}</AmbientOptionCard>
+                                    <AmbientOptionCard key={colors.id} onClick={()=>{ getColorType(colors.type)}}>{colors.type}</AmbientOptionCard>
                                 ))
                             }
                         </AmbientOptionTxtContainer>
@@ -244,7 +261,7 @@ const IntroAuthModal=(props)=>{
                         <ButtonTxtElem >Your private key will be used to recover your account</ButtonTxtElem>
 
                       <ButtonInnerParentContainer>
-                      <CreateButtonElem>Create Account </CreateButtonElem>
+                      <CreateButtonElem onClick={createUserAccount}>Create Account </CreateButtonElem>
                       <ImportButtonElem>Import Account</ImportButtonElem>
                       </ButtonInnerParentContainer>
                        
