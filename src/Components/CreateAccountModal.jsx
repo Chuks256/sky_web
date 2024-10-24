@@ -30,7 +30,7 @@ padding:30px;
 display:flex;
 justify-content:left;
 flex-direction:column;
-margin-left:50px;
+margin-left:0px;
 `;
 
 const SelectParentContainer = styled.div`
