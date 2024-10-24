@@ -81,8 +81,8 @@ gap:10px;
 const ProfileImgElem=styled.div`
 background:var(--sky-preference-bg-shade-color);
 padding:20px;
-width:40px;
-height:40px;
+width:50px;
+height:50px;
 border-radius:100px;
 border-style:solid;
 border-color:var(--sky-preference-bg-shade-color);
