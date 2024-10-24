@@ -98,6 +98,7 @@ const SplashScreen=()=>{
               event.stopPropagation()
                 const elem=document.querySelector(".parentContainer");
                  elem.style.display="flex"
+                 
         }
         else{
             navigate("/app")

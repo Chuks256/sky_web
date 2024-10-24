@@ -187,6 +187,20 @@ const IntroAuthModal=(props)=>{
         elem.style.display="none"
     }
 
+
+    const copyTxtFunction=async()=>{
+        try {
+            await navigator.clipboard.writeText(props.privateKey);
+            setCopyTxt("Copied");
+            setTimeout(()=>{
+                setCopyTxt("Copy")
+            },1000);
+            clearTimeout();
+          } catch (err) {
+            console.error('Failed to copy text: ', err);
+          }
+    }
+
     return(
         <Container className="parentContainer">    
             <IntroAuthBottomSheet>
@@ -206,7 +220,7 @@ const IntroAuthModal=(props)=>{
 
                         <PrivateKeyTxtParentContainer>
                             <PrivateKeyData>{props.privateKey}</PrivateKeyData>
-                            <CopyBtn>{copyTxt}</CopyBtn>
+                            <CopyBtn onClick={copyTxtFunction}>{copyTxt}</CopyBtn>
                         </PrivateKeyTxtParentContainer>
 
                     </PrivateKeyParentContainer>
