@@ -81,8 +81,7 @@ padding-top:35px;
 const AmbientOptionTxtContainer = styled.div`
 display:grid;
 grid-template-columns:repeat(3,1fr);
-gap:1em;
-column-gap:0.3em;
+gap:10px;
 padding-top:10px;
 `;
 
