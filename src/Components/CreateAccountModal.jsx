@@ -36,7 +36,7 @@ margin-left:0px;
 const SelectParentContainer = styled.div`
 display:flex;
 flex-direction:column;
-gap:1em;
+gap:2em;
 `;
 
 const CreateAccountHeader=styled.div`
@@ -62,13 +62,16 @@ width:260px;
 `;
 
 const ProfileImageParentContainer = styled.div`
+display:flex;
+flex-direction:column;
+gap:1em;
 `;
 
 const ProfileImageSubContainer = styled.div`
 margin-top:20px;
  display: grid;
 grid-template-columns: repeat(10, 1fr);
-width:210px;
+width:300px;
 overflow-x:scroll;
 overflow-y:hidden;
 padding:0px;
