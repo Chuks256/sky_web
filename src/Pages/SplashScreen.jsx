@@ -105,7 +105,7 @@ const SplashScreen=()=>{
                     const url="https://sky-node.onrender.com/endpoint/1.0/generatePrivateKey"
                     const getPrivateKeyFromServer=await fetch(url);
                     const response =await getPrivateKeyFromServer.json();
-                    const truncatePrivateKey=response.privateKey.substring(0,26)+"...."
+                    const truncatePrivateKey=response.privateKey.substring(0,22)+"...."
                     setPrivate_key({
                         originalKey:response.privateKey,
                         truncatedKey:truncatePrivateKey
