@@ -64,7 +64,7 @@ width:260px;
 const ProfileImageParentContainer = styled.div`
 display:flex;
 flex-direction:column;
-gap:1em;
+gap:1.2em;
 `;
 
 const ProfileImageSubContainer = styled.div`
