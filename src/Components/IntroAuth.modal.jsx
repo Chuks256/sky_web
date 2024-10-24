@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useState } from "react";
+import CreateAccountModal from "./CreateAccountModal";
+
 
 const Container = styled.div`
 display:none;
@@ -221,7 +223,10 @@ const IntroAuthModal=(props)=>{
     }
 
     return(
-        <Container className="parentContainer">    
+        <>
+        <CreateAccountModal />
+        
+        <Container className="parentContainer">
             <IntroAuthBottomSheet>
                 <IntroAuthHeaderContainer>
                     
@@ -270,6 +275,8 @@ const IntroAuthModal=(props)=>{
                 </IntroAuthHeaderContainer>
             </IntroAuthBottomSheet>
         </Container>
+        </>
+        
     )
 }
 
