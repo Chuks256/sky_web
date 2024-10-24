@@ -76,6 +76,7 @@ overflow-x:scroll;
 overflow-y:hidden;
 padding:0px;
 gap:15px;
+border-radius:10px;
 `;
 
 const ProfileImgElem=styled.div`
