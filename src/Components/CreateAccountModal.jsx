@@ -78,6 +78,7 @@ overflow-y:hidden;
 padding:0px;
 gap:15px;
 border-radius:10px;
+transition:linear,500ms;
 `;
 
 const ProfileImgElem=styled.div`
@@ -117,11 +118,11 @@ border-radius:5px;
 font-weight:bold;
 font-size:13px;
 width:300px;
-margin-top:120px;
+margin-top:110px;
 `;
 
 const CreateAccountModal=(props)=>{
-  const [selectedItem,getSelectedItem]=useState(null)
+  const [selectedItem,setSelectedItem]=useState(null)
 
   const profilePics=[
     {
@@ -146,7 +147,7 @@ const CreateAccountModal=(props)=>{
     },
     {
       id:6,
-      src:"https://i.pinimg.com/control/236x/b2/21/59/b2215961260b69d79712dcb3819a25e5.jpg"
+      src:"https://i.pinimg.com/236x/cb/4d/8f/cb4d8f742ef83237b22667deef378b4a.jpg"
     },
     {
       id:7,
@@ -162,7 +163,7 @@ const CreateAccountModal=(props)=>{
     },
     {
       id:10,
-      src:"https://i.pinimg.com/control/236x/ca/18/a9/ca18a977ef10cc915a78763f283976ca.jpg"
+      src:"https://i.pinimg.com/236x/53/87/f9/5387f9768ec52a0e26832bffd7107121.jpg"
     } ,
     {
       id:11,
@@ -204,6 +205,11 @@ const CreateAccountModal=(props)=>{
       src:"https://i.pinimg.com/236x/32/6a/5d/326a5d923d302ae3c0104c3fa1ed2b79.jpg"
     }            
   ]
+
+  const SelectProfilePics=(src="")=>{
+    setSelectedItem(src);
+  }
+
     return(
         <Container>
         <AccountBottomSheet>
@@ -231,7 +237,7 @@ const CreateAccountModal=(props)=>{
                 <ProfileImageSubContainer>
                   {
                     profilePics.map((data)=>(
-                      <ProfileImgElem key={data.id} style={{backgroundImage:`url(${data.src})`}}></ProfileImgElem>
+                      <ProfileImgElem onClick={()=>{SelectProfilePics(data.src)}} key={data.id} style={{backgroundImage:`url(${data.src})`}}></ProfileImgElem>
                     ))
                   }
                 </ProfileImageSubContainer>
