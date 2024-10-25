@@ -46,7 +46,7 @@ const NotificationHeader=styled.b`
 font-size:13px;
 `;
 const NotificationTimestamp=styled.span`
-font-size:12px;
+font-size:11px;
 `;
 
 
@@ -58,7 +58,7 @@ const NotificationModal=(props)=>{
             <NotificationBadgeImg></NotificationBadgeImg>
         <NotificationTxtContainer>
             <NotificationHeader>{props.NotificationMsg}</NotificationHeader>
-            <NotificationTimestamp>{new Date().getSeconds()}</NotificationTimestamp>
+            <NotificationTimestamp>{new Date().getSeconds()} Seconds</NotificationTimestamp>
         </NotificationTxtContainer>
             </NotificationParentContainer>
        

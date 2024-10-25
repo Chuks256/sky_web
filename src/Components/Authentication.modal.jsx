@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import ErrorModal from "./Error.modal";
 import NotificationModal from "./Notification.modal";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
 position:absolute;
@@ -113,6 +114,13 @@ const AuthenticationModal=()=>{
         msg:""
     });
 
+    const [notifyUser,setNotifyUser]=useState({
+        position:"-100px",
+        msg:""
+    })
+
+    const navigateObj=useNavigate();
+
     const HandleChange=(event)=>{
         setPrivateKeyData(event.target.value);
     }
@@ -130,7 +138,21 @@ const AuthenticationModal=()=>{
         },4000)
     }
 
-    const ImportAccountFunction=()=>{
+    // function to notify user of successful event
+    const Notify_user_function=(msg="")=>{
+        setNotifyUser({
+            position:'50px',
+            msg:msg
+        })
+        setTimeout(()=>{
+            setNotifyUser({
+                position:'-100px',
+                msg:""
+            })
+        },3000)
+    }
+
+    const ImportAccountFunction=async()=>{
         const getPrivateInputBox=document.querySelector(".privateKey_input");
         if(getPrivateKeyData.length===0){
             getPrivateInputBox.style.borderColor="red";
@@ -138,7 +160,38 @@ const AuthenticationModal=()=>{
         }
         else{
             getPrivateInputBox.style.borderColor="transparent";
-            alert(getPrivateKeyData)
+            try{
+                const url='https://sky-node.onrender.com/endpoint/1.0/importAccount';
+                const devUrl='http://localhost:4432/endpoint/1.0/importAccount'
+                // define params 
+                const Params={
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json'
+                    },
+                    body:JSON.stringify({
+                        privateKey:getPrivateKeyData
+                    })
+                }
+
+                // send data to server 
+                const ImportUserData=await fetch(devUrl,Params);
+                const response=await ImportUserData.json();
+                if(response.message=="invalid address"){
+                    RevealErrorMessage(response.message)    
+                }
+                else{
+                    if(response.message==="correct_address"){
+                        Notify_user_function("Import Successful");
+                        // next save session in localstorage and move to main app
+                        await localStorage.setItem("authorization",response.authorization);
+                        await navigateObj("/app");
+                    }
+                }
+            }
+            catch(err){
+                RevealErrorMessage("Something went wrong")
+            }
         }
     }
     
@@ -147,6 +200,7 @@ const AuthenticationModal=()=>{
         <>
      
         <Container className="import_account_Parent_container">
+        <NotificationModal position={notifyUser.position} NotificationMsg={notifyUser.msg} />
         <ErrorModal reveal={showErrorMsg.state} errorMsg={showErrorMsg.msg} />
         <AuthenticationBottomSheet>
 
