@@ -158,7 +158,8 @@ cursor:pointer;
 const IntroAuthModal=(props)=>{
     const [copyTxt,setCopyTxt]=useState("Copy");
     const [SelectedItem,setSelectedItem]=useState(null)
-
+    const [showComponent,setShowComponent]=useState({mainModal:true,closeModal:false});
+    
     const AmbientColor=[
         {
             id:1,
@@ -187,9 +188,8 @@ const IntroAuthModal=(props)=>{
     ]
 
     const CloseIntroAuthContainer=(ev)=>{
-        ev.stopPropagation();
-        const elem=document.querySelector(".parentContainer");
-        elem.style.display="none"
+        const closeAuthModal=document.querySelector(".IntroAuth_parent_modal");
+        closeAuthModal.style.display="none";
     }
 
 
@@ -211,70 +211,76 @@ const IntroAuthModal=(props)=>{
         setSelectedItem(data);
     }
 
+    
+
     // fucntion for creating user account
-    const createUserAccount=(ev)=>{
-        ev.stopPropagation();
-        alert(SelectedItem)
+    const createUserAccount=()=>{
+        const OpenAcctCreationModal=document.querySelector(".acct_parent_modal");
+        OpenAcctCreationModal.style.display="block";
+        CloseIntroAuthContainer();
     } 
 
     // function for importing account 
-    const ImportUserAccount=(ev)=>{
-        ev.stopPropagation()
+    const ImportUserAccount=()=>{
+        const ImportAcct=document.querySelector(".import_account_Parent_container");
+        ImportAcct.style.display="block";
+        CloseIntroAuthContainer();
     }
 
     return(
         <>
-        <CreateAccountModal />
         
-        <Container className="parentContainer">
-            <IntroAuthBottomSheet>
-                <IntroAuthHeaderContainer>
-                    
-                    {/* header txt */}
-                    <IntroHeaderTxtParentContainer>
-                        <CloseContainer>
-                        <IntroAuthHeaderTxt>Private Key</IntroAuthHeaderTxt>
-                        <CloseTxt onClick={CloseIntroAuthContainer}>Close</CloseTxt>          
-                        </CloseContainer>
-                    <IntroAuthDetails>Make sure you keep you private key safe</IntroAuthDetails>
-                    </IntroHeaderTxtParentContainer>
-
-                    {/* private key section */}
-                    <PrivateKeyParentContainer>
-
-                        <PrivateKeyTxtParentContainer>
-                            <PrivateKeyData>{props.truncatedKey}</PrivateKeyData>
-                            <CopyBtn onClick={copyTxtFunction}>{copyTxt}</CopyBtn>
-                        </PrivateKeyTxtParentContainer>
-
-                    </PrivateKeyParentContainer>
-
-                    {/* ambient option section */}
-                    <AmbientOptionParentContainer>
-                        <AmbientHeaderTxt>Choose Your Ambient Color</AmbientHeaderTxt>
-                        <AmbientOptionTxtContainer>
-                            {
-                                AmbientColor.map((colors)=>(
-                                    <AmbientOptionCard key={colors.id} onClick={()=>{ getColorType(colors.type)}}>{colors.type}</AmbientOptionCard>
-                                ))
-                            }
-                        </AmbientOptionTxtContainer>
-                    </AmbientOptionParentContainer>
-
-                    {/* button section */}
-                    <ButtonParentContainer>
-                        <ButtonTxtElem >Your private key will be used to recover your account</ButtonTxtElem>
-
-                      <ButtonInnerParentContainer>
-                      <CreateButtonElem onClick={createUserAccount}>Create Account </CreateButtonElem>
-                      <ImportButtonElem>Import Account</ImportButtonElem>
-                      </ButtonInnerParentContainer>
-                       
-                    </ButtonParentContainer>
-                    
-                </IntroAuthHeaderContainer>
-            </IntroAuthBottomSheet>
-        </Container>
+        <CreateAccountModal />   
+                   <Container className='IntroAuth_parent_modal' >
+                    <IntroAuthBottomSheet>
+                        <IntroAuthHeaderContainer>
+                            
+                            {/* header txt */}
+                            <IntroHeaderTxtParentContainer>
+                                <CloseContainer>
+                                <IntroAuthHeaderTxt>Private Key</IntroAuthHeaderTxt>
+                                <CloseTxt onClick={()=>{CloseIntroAuthContainer()}}>Close</CloseTxt>          
+                                </CloseContainer>
+                            <IntroAuthDetails>Make sure you keep you private key safe</IntroAuthDetails>
+                            </IntroHeaderTxtParentContainer>
+        
+                            {/* private key section */}
+                            <PrivateKeyParentContainer>
+        
+                                <PrivateKeyTxtParentContainer>
+                                    <PrivateKeyData>{props.truncatedKey}</PrivateKeyData>
+                                    <CopyBtn onClick={copyTxtFunction}>{copyTxt}</CopyBtn>
+                                </PrivateKeyTxtParentContainer>
+        
+                            </PrivateKeyParentContainer>
+        
+                            {/* ambient option section */}
+                            <AmbientOptionParentContainer>
+                                <AmbientHeaderTxt>Choose Your Ambient Color</AmbientHeaderTxt>
+                                <AmbientOptionTxtContainer>
+                                    {
+                                        AmbientColor.map((colors)=>(
+                                            <AmbientOptionCard key={colors.id} onClick={()=>{ getColorType(colors.type)}}>{colors.type}</AmbientOptionCard>
+                                        ))
+                                    }
+                                </AmbientOptionTxtContainer>
+                            </AmbientOptionParentContainer>
+        
+                            {/* button section */}
+                            <ButtonParentContainer>
+                                <ButtonTxtElem >Your private key will be used to recover your account</ButtonTxtElem>
+        
+                              <ButtonInnerParentContainer>
+                              <CreateButtonElem onClick={()=>{createUserAccount()}}>Create Account </CreateButtonElem>
+                              <ImportButtonElem onClick={()=>{ImportUserAccount()}}>Import Account</ImportButtonElem>
+                              </ButtonInnerParentContainer>
+                               
+                            </ButtonParentContainer>
+                            
+                        </IntroAuthHeaderContainer>
+                    </IntroAuthBottomSheet>
+                </Container>
+        
         </>
         
     )

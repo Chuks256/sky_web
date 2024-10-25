@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useState } from "react";
 import { IoArrowBack } from "react-icons/io5";
@@ -12,6 +12,7 @@ left:0px;
 background:rgba(217,217,217,31%);
 backdrop-filter:blur(4px);
 z-index:1;
+display:none;
 `;
 
 const AccountBottomSheet=styled.div`
@@ -121,7 +122,7 @@ width:300px;
 margin-top:110px;
 `;
 
-const CreateAccountModal=(props)=>{
+const CreateAccountModal=()=>{
   const [selectedItem,setSelectedItem]=useState(null)
 
   const profilePics=[
@@ -210,29 +211,42 @@ const CreateAccountModal=(props)=>{
     setSelectedItem(src);
   }
 
+  const OpenAuthModalFunction =()=>{
+    const OpenAuthModal=document.querySelector(".IntroAuth_parent_modal");
+    OpenAuthModal.style.display="block"
+  }
+
+  const CloseAcctModalFunction=()=>{
+    const CloseAcctModal=document.querySelector(".acct_parent_modal");
+    CloseAcctModal.style.display="none";
+    OpenAuthModalFunction();
+  }
+
+    
+
     return(
-        <Container>
+      <>
+        <Container className="acct_parent_modal">
         <AccountBottomSheet>
             <AccountBottomParentContainer>
-
                 {/* account header */}
-            <CreateAccountHeader><IoArrowBack size={20} /></CreateAccountHeader>
+            <CreateAccountHeader><IoArrowBack style={{cursor:"pointer"}} onClick={()=>{CloseAcctModalFunction()}} size={20} /></CreateAccountHeader>
             
             <SelectParentContainer>
-
+      
                  {/* Name container  */}
             <NameParentContainer>
                 <NameTxt>UserName</NameTxt>
                 <NameInputBox />
             </NameParentContainer>
-
+      
             {/* image container section */}
             <ProfileImageParentContainer>
                 <ProfileImageSelectTxtContainer>
                     <ProfileImageSelectHeaderTxt>Select your profile pics</ProfileImageSelectHeaderTxt>
                     <ProfileImageSelectTxt>Select your anonymous profile pics</ProfileImageSelectTxt>
                 </ProfileImageSelectTxtContainer>
-
+      
                 {/* image containr  */}
                 <ProfileImageSubContainer>
                   {
@@ -241,14 +255,16 @@ const CreateAccountModal=(props)=>{
                     ))
                   }
                 </ProfileImageSubContainer>
-
+      
             </ProfileImageParentContainer>
             </SelectParentContainer>
-
+      
             <CreateAccountBtn>Create Account</CreateAccountBtn>
             </AccountBottomParentContainer>
         </AccountBottomSheet>
-        </Container>
+        </Container>  
+      </>
+          
     )
 }
 

@@ -11,6 +11,7 @@ left:0px;
 background:rgba(217,217,217,31%);
 backdrop-filter:blur(4px);
 z-index:1;
+display:none;
 `;
 
 const AuthenticationBottomSheet=styled.div`
@@ -84,10 +85,22 @@ font-weight:bold;
 color:ivory;
 `;
 
-const AuthenticationModal=(props)=>{
+
+
+const OpenAuthModalAccount=()=>{
+document.querySelector(".IntroAuth_parent_modal").style.display="block"
+}
+
+const closeImportAcctModal=()=>{
+document.querySelector(".import_account_Parent_container").style.display="none";
+OpenAuthModalAccount();
+}
+
+
+const AuthenticationModal=()=>{
 
     return(
-        <Container style={{display:`${props.reveal}`}}>
+        <Container className="import_account_Parent_container">
         <AuthenticationBottomSheet>
 
             <PrivateKeyAuthInputSection>
@@ -104,7 +117,7 @@ const AuthenticationModal=(props)=>{
                 {/* Button section */}
                 <ImportBtnParentContainer>
                     <ImportUserAccountBtn>Import Account</ImportUserAccountBtn>
-                    <BackBtn>Back</BackBtn>
+                    <BackBtn onClick={()=>{closeImportAcctModal()}}>Back</BackBtn>
                 </ImportBtnParentContainer>
 
 

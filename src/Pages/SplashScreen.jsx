@@ -85,7 +85,7 @@ const SplashScreen=()=>{
         originalKey:"",
         truncatedKey:"Generating private key"
     });
-    const [revealAuthModal,setRevealAuthModal]=useState("none");
+
     const [revealErrorModal,setRevealErrorModal]=useState({
         msg:"",
         mode:"none"
@@ -99,8 +99,8 @@ const SplashScreen=()=>{
         const getUserSessionKey=localStorage.getItem("_Authorization");
         if(getUserSessionKey===null || getUserSessionKey.length===0){
               event.stopPropagation()
-                const elem=document.querySelector(".parentContainer");
-                 elem.style.display="flex"
+              const OpenIntroAuthModal=document.querySelector(".IntroAuth_parent_modal");
+              OpenIntroAuthModal.style.display="flex"
                  try{
                     const url="https://sky-node.onrender.com/endpoint/1.0/generatePrivateKey"
                     const getPrivateKeyFromServer=await fetch(url);
@@ -124,8 +124,8 @@ const SplashScreen=()=>{
     return(
         <Container >
             <ErrorModal reveal={revealErrorModal.mode} errorMsg={revealErrorModal.msg}/>
-            <IntroAuthModal  originalKey={private_key.originalKey} truncatedKey={private_key.truncatedKey}  />
-            <AuthenticationModal reveal={revealAuthModal} />
+            <IntroAuthModal  originalKey={private_key.originalKey} truncatedKey={private_key.truncatedKey}  /> 
+            <AuthenticationModal /> 
             {/* Define splash parent container  */}
             <SplashScreenParentContainer>
                 <LogoParentContainer>
