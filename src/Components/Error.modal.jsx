@@ -9,7 +9,7 @@ height:70px;
 width:100%;
 bottom:0px;
 z-index:1;
-display:flex;
+display:none;
 align-items:center;
 justify-content:center;
 transition:linear,800ms;

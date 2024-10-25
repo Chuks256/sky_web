@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { useState } from "react";
+import ErrorModal from "./Error.modal";
+import NotificationModal from "./Notification.modal";
 
 const Container = styled.div`
 position:absolute;
@@ -74,6 +76,12 @@ padding:14px;
 border-radius:5px;
 font-weight:bold;
 font-size:14px;
+transition:linear,300ms;
+transform:scale(100%);
+
+&:hover{
+transform:scale(85%);
+}
 `;
 
 const BackBtn = styled.button `
@@ -97,10 +105,49 @@ OpenAuthModalAccount();
 }
 
 
+
 const AuthenticationModal=()=>{
+    const [getPrivateKeyData,setPrivateKeyData]=useState("")
+    const [showErrorMsg,setShowErrorMsg]=useState({
+        state:"none",
+        msg:""
+    });
+
+    const HandleChange=(event)=>{
+        setPrivateKeyData(event.target.value);
+    }
+
+    const RevealErrorMessage=(_msg="")=>{
+        setShowErrorMsg({
+            state:"flex",
+            msg:_msg
+        })
+        setTimeout(()=>{
+            setShowErrorMsg({
+                state:"none",
+                msg:""
+            })
+        },4000)
+    }
+
+    const ImportAccountFunction=()=>{
+        const getPrivateInputBox=document.querySelector(".privateKey_input");
+        if(getPrivateKeyData.length===0){
+            getPrivateInputBox.style.borderColor="red";
+            RevealErrorMessage("private key field empty")
+        }
+        else{
+            getPrivateInputBox.style.borderColor="transparent";
+            alert(getPrivateKeyData)
+        }
+    }
+    
 
     return(
+        <>
+     
         <Container className="import_account_Parent_container">
+        <ErrorModal reveal={showErrorMsg.state} errorMsg={showErrorMsg.msg} />
         <AuthenticationBottomSheet>
 
             <PrivateKeyAuthInputSection>
@@ -111,12 +158,12 @@ const AuthenticationModal=()=>{
                     <PrivateTxtHeader>Import Account </PrivateTxtHeader>
                     <PrivateTxtDetails>Enter your private key to import your account</PrivateTxtDetails>
                 </PrivateTxtContainer>
-                <PrivateInputBox placeholder="Private Key" required="true" />
+                <PrivateInputBox className="privateKey_input" placeholder="Private Key" value={getPrivateKeyData} onChange={HandleChange} required="true" />
                 </PrivateParentTxtContainer>
 
                 {/* Button section */}
                 <ImportBtnParentContainer>
-                    <ImportUserAccountBtn>Import Account</ImportUserAccountBtn>
+                    <ImportUserAccountBtn onClick={()=>{ImportAccountFunction()}}>Import Account</ImportUserAccountBtn>
                     <BackBtn onClick={()=>{closeImportAcctModal()}}>Back</BackBtn>
                 </ImportBtnParentContainer>
 
@@ -125,6 +172,7 @@ const AuthenticationModal=()=>{
 
         </AuthenticationBottomSheet>
         </Container>
+        </>
     )
 }
 

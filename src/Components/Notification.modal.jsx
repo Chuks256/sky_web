@@ -52,6 +52,7 @@ font-size:12px;
 
 const NotificationModal=(props)=>{
     return(
+        
         <Container style={{top:`${props.position}`}}>
             <NotificationParentContainer>
             <NotificationBadgeImg></NotificationBadgeImg>
