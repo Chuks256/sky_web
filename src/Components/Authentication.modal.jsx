@@ -114,6 +114,8 @@ const AuthenticationModal=()=>{
         msg:""
     });
 
+    const [importBtnState,setImportBtnState]=useState("Import Account")
+
     const [notifyUser,setNotifyUser]=useState({
         position:"-100px",
         msg:""
@@ -161,6 +163,7 @@ const AuthenticationModal=()=>{
         else{
             getPrivateInputBox.style.borderColor="transparent";
             try{
+                setImportBtnState("Please Wait ....")
                 const url='https://sky-node.onrender.com/endpoint/1.0/importAccount';
                 const devUrl='http://localhost:4432/endpoint/1.0/importAccount'
                 // define params 
@@ -178,11 +181,14 @@ const AuthenticationModal=()=>{
                 const ImportUserData=await fetch(devUrl,Params);
                 const response=await ImportUserData.json();
                 if(response.message=="invalid address"){
-                    RevealErrorMessage(response.message)    
+                    RevealErrorMessage(response.message)
+                    setImportBtnState("Import Account")
+
                 }
                 else{
                     if(response.message==="correct_address"){
                         Notify_user_function("Import Successful");
+                        setImportBtnState("Import Account")
                         // next save session in localstorage and move to main app
                         await localStorage.setItem("authorization",response.authorization);
                         await navigateObj("/app");
@@ -209,7 +215,7 @@ const AuthenticationModal=()=>{
                 {/* input text section  */}
                 <PrivateParentTxtContainer>
                 <PrivateTxtContainer>
-                    <PrivateTxtHeader>Import Account </PrivateTxtHeader>
+                    <PrivateTxtHeader>Import Account</PrivateTxtHeader>
                     <PrivateTxtDetails>Enter your private key to import your account</PrivateTxtDetails>
                 </PrivateTxtContainer>
                 <PrivateInputBox className="privateKey_input" placeholder="Private Key" value={getPrivateKeyData} onChange={HandleChange} required="true" />
@@ -217,7 +223,7 @@ const AuthenticationModal=()=>{
 
                 {/* Button section */}
                 <ImportBtnParentContainer>
-                    <ImportUserAccountBtn onClick={()=>{ImportAccountFunction()}}>Import Account</ImportUserAccountBtn>
+                    <ImportUserAccountBtn onClick={()=>{ImportAccountFunction()}}>{importBtnState}</ImportUserAccountBtn>
                     <BackBtn onClick={()=>{closeImportAcctModal()}}>Back</BackBtn>
                 </ImportBtnParentContainer>
 

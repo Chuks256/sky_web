@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useState } from "react";
 import CreateAccountModal from "./CreateAccountModal";
-
+import ErrorModal from "./Error.modal";
 
 const Container = styled.div`
 display:none;
@@ -158,7 +158,11 @@ cursor:pointer;
 const IntroAuthModal=(props)=>{
     const [copyTxt,setCopyTxt]=useState("Copy");
     const [SelectedItem,setSelectedItem]=useState(null)
-    const [showComponent,setShowComponent]=useState({mainModal:true,closeModal:false});
+    const [showErrorMsg,setShowErrorMsg]=useState({
+        state:"none",
+        msg:""
+    });
+
     
     const AmbientColor=[
         {
@@ -187,6 +191,21 @@ const IntroAuthModal=(props)=>{
         }
     ]
 
+    // function for showing error message 
+    const RevealErrorMessage=(_msg="")=>{
+        setShowErrorMsg({
+            state:"flex",
+            msg:_msg
+        })
+        setTimeout(()=>{
+            setShowErrorMsg({
+                state:"none",
+                msg:""
+            })
+        },4000)
+    }
+
+
     const CloseIntroAuthContainer=(ev)=>{
         const closeAuthModal=document.querySelector(".IntroAuth_parent_modal");
         closeAuthModal.style.display="none";
@@ -211,13 +230,25 @@ const IntroAuthModal=(props)=>{
         setSelectedItem(data);
     }
 
+    const getUserAmbientChoice=(colorType="")=>{
+                localStorage.setItem("UserData",{
+                    ambientColor:colorType
+                })
+            }
     
-
     // fucntion for creating user account
-    const createUserAccount=()=>{
-        const OpenAcctCreationModal=document.querySelector(".acct_parent_modal");
-        OpenAcctCreationModal.style.display="block";
-        CloseIntroAuthContainer();
+    const createUserAccount=async()=>{
+        if(SelectedItem===null){
+            RevealErrorMessage("Ambient color should not be empty")
+        }
+        else{
+            if(SelectedItem!=null){
+                const OpenAcctCreationModal=document.querySelector(".acct_parent_modal");
+                OpenAcctCreationModal.style.display="block";
+                await getUserAmbientChoice(SelectedItem);
+                CloseIntroAuthContainer();
+            }
+        }
     } 
 
     // function for importing account 
@@ -232,6 +263,7 @@ const IntroAuthModal=(props)=>{
         
         <CreateAccountModal />   
                    <Container className='IntroAuth_parent_modal' >
+                   <ErrorModal reveal={showErrorMsg.state} errorMsg={showErrorMsg.msg} />
                     <IntroAuthBottomSheet>
                         <IntroAuthHeaderContainer>
                             
