@@ -22,7 +22,6 @@ height:150vh;
 
 const AppBarHeader= styled.div`
 position:absolute;
-background:var(--sky-preference-default-color);
 width:100%;
 top:0px;
 height:40%;
@@ -65,7 +64,6 @@ padding-top:80px;
 `
 
 const PostButton=styled.button`
-background:var(--sky-default-color);
 padding:12px;
 width:80px;
 font-size:14px;
