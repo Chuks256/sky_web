@@ -53,7 +53,7 @@ font-size:14px;
 transition:linear,300ms;
 transform:scale(100%);
 color:ivory;
-width:300px;
+width:200px;
 &:hover{
 transform:scale(85%);
 }
@@ -65,7 +65,7 @@ padding:14px;
 border-radius:5px;
 font-weight:bold;
 font-size:14px;
-width:300px;
+width:200px;
 transition:linear,300ms;
 transform:scale(100%);
 &:hover{
@@ -74,7 +74,7 @@ transform:scale(85%);
 `;
 
 const ProceedToProfile=styled.button`
-width:300px;
+width:200px;
 background-color:var(--sky-preference-bg-shade-color);
 padding:14px;
 color:ivory;
@@ -88,14 +88,18 @@ transform:scale(85%);
 }
 `;
 
-// const openAlertModal=()=>{
-// document.querySelector(".alert_modal").style.display="block"
-// }
+const closeAlertModal=()=>{
+document.querySelector(".alert_modal").style.display="none";
+OpenAuthModalAccount();
+}
 
-// const closeAlertModal=()=>{
-// document.querySelector(".alert_modal").style.display="none";
-// OpenAuthModalAccount();
-// }
+const logoutUser=()=>{
+ const removeSessionToken=localStorage.removeItem("authorization");
+ if(removeSessionToken){
+    const navigateObj=useNavigate();
+    navigateObj("/")
+ }    
+}
 
 
 
@@ -106,9 +110,9 @@ const AlertModal=()=>{
         <AlertModalElem>
             <AlertParentContainer>
             <BtnParentContainer>
-                <LogoutBtn>Log out ?</LogoutBtn>
+                <LogoutBtn onClick={()=>{logoutUser()}}>Log out ?</LogoutBtn>
                 <ProceedToProfile>Proceed to Profile</ProceedToProfile>
-                <CloseBtn>Close</CloseBtn>
+                <CloseBtn onClick={()=>{closeAlertModal()}}>Close</CloseBtn>
             </BtnParentContainer>
             </AlertParentContainer>
         </AlertModalElem>

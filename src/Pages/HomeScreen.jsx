@@ -279,6 +279,10 @@ const HomeScreen=()=>{
     ]
 
     
+const openAlertModal=()=>{
+document.querySelector(".alert_modal").style.display="block"
+}
+    
 
     return(
         <>
@@ -288,7 +292,7 @@ const HomeScreen=()=>{
             {/* Header */}
             <AppBarHeader style={{background:`${getAmbientColor.mainColor}`}}>
                 <AppBarItemsContainer>
-                    <UserProfilePics style={{backgroundImage:`url(${get_user_data.profilePics})`}}></UserProfilePics>
+                    <UserProfilePics onClick={()=>{openAlertModal()}} style={{backgroundImage:`url(${get_user_data.profilePics})`}}></UserProfilePics>
                     <UserPointBalance style={{background:`${getAmbientColor.subColor}`}} >
                     <PiStarFourFill  size={20}/>
                     {skyPoint}
