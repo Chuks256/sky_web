@@ -111,10 +111,36 @@ const CreatePostScreen=()=>{
         msg:""
     })
 
+    const [userRant,setuserRant]=useState("")
+
+    const [limitColor,setLimitColor]=useState({txt:"ivory",bg:"#191a1a"});
+    
+    const [limitTxt,setLimitTxt]=useState(`${0}`)
+
 
     const NavigateObj=useNavigate();
 
-    
+        // function to handle chnage in text input 
+        const handleRantChange = (event)=>{
+            const rantValue=event.target.value;
+            if(rantValue.length>100){
+                setLimitColor({
+                    txt:"ivory",
+                    bg:"var(--sky-default-color)"
+                })
+                setLimitTxt("Limit reached");
+            }
+            else{
+                setLimitTxt(`${rantValue.length}/100 limit `);
+                setLimitColor({
+                    txt:"ivory",
+                    bg:"#191a1a"
+                })
+                setuserRant(rantValue);
+                console.log(rantValue.length)
+            }
+        }
+
         // function for showing error message 
         const RevealErrorMessage=(_msg="")=>{
             setShowErrorMsg({
@@ -158,7 +184,7 @@ const CreatePostScreen=()=>{
 
             {/* input box */}
             <ParentContainer>
-            <RantInputBox placeholder="What do you want to rant about ?"></RantInputBox>
+            <RantInputBox onChange={handleRantChange} placeholder="What do you want to rant about ?"></RantInputBox>
             </ParentContainer>
 
             <RantParentMediaContainer>
@@ -166,7 +192,7 @@ const CreatePostScreen=()=>{
                 <TbPhotoFilled style={{cursor:"pointer"}} size={25} />
                 <RantGifElem style={{cursor:"pointer"}}>Gif</RantGifElem>                
             </RantMediaOptionContainer>
-            <RantLimit>250 words limit</RantLimit>
+            <RantLimit style={{background:`${limitColor.bg}`,color:`${limitColor.txt}`}}>{limitTxt}</RantLimit>
             </RantParentMediaContainer>
            <CreateRantBtn>{rantBtnState}</CreateRantBtn>
         </Container>
