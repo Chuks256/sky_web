@@ -5,6 +5,7 @@ import { PiStarFourFill } from "react-icons/pi";
 import { IoMdArrowDropdown } from "react-icons/io";
 import {useState} from "react"
 import { useLocation } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 // import components 
 import BottomNavigation from "../Components/BottomNavigation";
@@ -93,10 +94,10 @@ const HomeScreen=()=>{
     })
 
 
-
     const locationObj=useLocation()
+    const navigateModule=useNavigate();
 
-    
+
         // function for showing error message 
         const RevealErrorMessage=(_msg="")=>{
             setShowErrorMsg({
@@ -306,6 +307,10 @@ document.querySelector(".alert_modal").style.display="flex"
 }
     
 
+const handleRantEvent=()=>{
+    navigateModule("/createRant")
+}
+
     return(
         <>
         {/* <PointBalanceModal /> */}
@@ -334,7 +339,7 @@ document.querySelector(".alert_modal").style.display="flex"
            
             </PostParentContainer>
 
-            <PostButton style={{backgroundColor:`${getAmbientColor.subColor}`}}>Post</PostButton>
+            <PostButton onClick={()=>{handleRantEvent()}} style={{backgroundColor:`${getAmbientColor.subColor}`}}>Post</PostButton>
 
             {/* Bottom Navigaion */}
             <BottomNavigation />
