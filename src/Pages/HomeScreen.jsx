@@ -11,6 +11,7 @@ import BottomNavigation from "../Components/BottomNavigation";
 import PostModal from "../Components/Post.modal";
 import PointBalanceModal from "../Components/PointBalance.modal";
 import ErrorModal from "../Components/Error.modal";
+import AlertModal from "../Components/Alert.Modal"
 
 const Container = styled.div`
 display:flex;
@@ -311,6 +312,7 @@ const HomeScreen=()=>{
 
             {/* Bottom Navigaion */}
             <BottomNavigation />
+            <AlertModal />
             <ErrorModal reveal={showErrorMsg.state} errorMsg={showErrorMsg.msg} />
         </Container>
         </>
