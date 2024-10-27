@@ -280,7 +280,7 @@ const HomeScreen=()=>{
 
     
 const openAlertModal=()=>{
-document.querySelector(".alert_modal").style.display="block"
+document.querySelector(".alert_modal").style.display="flex"
 }
     
 

@@ -94,11 +94,9 @@ OpenAuthModalAccount();
 }
 
 const logoutUser=()=>{
- const removeSessionToken=localStorage.removeItem("authorization");
- if(removeSessionToken){
+ localStorage.removeItem("authorization");
     const navigateObj=useNavigate();
     navigateObj("/")
- }    
 }
 
 
