@@ -171,7 +171,7 @@ const HomeScreen=()=>{
             const fetchData=async()=>{
                 try{
                     const getUserSessionToken=localStorage.getItem("authorization")
-                    const url="http://localhost:4432/endpoint/1.0/getUserData"
+                    const url="https://sky-node.onrender.com/endpoint/1.0/getUserData"
                     const transportProtocolParams={
                         headers: {
                             'Content-Type': 'application/json',
