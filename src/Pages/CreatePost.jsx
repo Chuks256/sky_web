@@ -5,6 +5,9 @@ import { SlOptionsVertical } from "react-icons/sl";
 import { TbPhotoFilled } from "react-icons/tb";
 import BottomNavigation from "../Components/BottomNavigation";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import ErrorModal from "../Components/Error.modal";
+import NotificationModal from "../Components/Notification.modal";
 
 const Container = styled.div`
 display:flex;
@@ -97,15 +100,58 @@ background:var(--sky-preference-bg-shade-color);
 `;
 
 const CreatePostScreen=()=>{
+    const[rantBtnState,setrantBtnState]=useState("Rant Now");
+    const [showErrorMsg,setShowErrorMsg]=useState({
+        state:"none",
+        msg:""
+    });
+
+    const [notifyUser,setNotifyUser]=useState({
+        position:"-100px",
+        msg:""
+    })
+
 
     const NavigateObj=useNavigate();
+
+    
+        // function for showing error message 
+        const RevealErrorMessage=(_msg="")=>{
+            setShowErrorMsg({
+                state:"flex",
+                msg:_msg
+            })
+            setTimeout(()=>{
+                setShowErrorMsg({
+                    state:"none",
+                    msg:""
+                })
+            },4000)
+        }
+
+            // function to notify user of successful event
+    const Notify_user_function=(msg="")=>{
+        setNotifyUser({
+            position:'50px',
+            msg:msg
+        })
+        setTimeout(()=>{
+            setNotifyUser({
+                position:'-100px',
+                msg:""
+            })
+        },3000)
+    }
+
 
 
     return(
         <>
            <Container>
+           <NotificationModal position={notifyUser.position} NotificationMsg={notifyUser.msg} />
+           <ErrorModal reveal={showErrorMsg.state} errorMsg={showErrorMsg.msg} />
              <CreateRantHeader>
-                <IoArrowBack onClick={()=>{ NavigateObj("/app") }} style={{cursor:"pointer"}} size={20}/>
+                <IoArrowBack onClick={()=>{ NavigateObj("/app") }} style={{cursor:"pointer"}} size={25}/>
                 <RantTxt>Rant</RantTxt>
                 <SlOptionsVertical/>
             </CreateRantHeader>
@@ -122,7 +168,7 @@ const CreatePostScreen=()=>{
             </RantMediaOptionContainer>
             <RantLimit>250 words limit</RantLimit>
             </RantParentMediaContainer>
-           <CreateRantBtn>Rant Now</CreateRantBtn>
+           <CreateRantBtn>{rantBtnState}</CreateRantBtn>
         </Container>
         <BottomNavigation />
         </>
