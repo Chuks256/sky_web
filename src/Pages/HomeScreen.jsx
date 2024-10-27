@@ -167,7 +167,8 @@ const HomeScreen=()=>{
     }
 
     const GetAllPost=async()=>{
-        const url="http://localhost:4432/endpoint/1.0/listAllUsersPost"
+        const devurl="http://localhost:4432/endpoint/1.0/listAllUsersPost"
+        const url="https://sky-node.onrender.com/endpoint/1.0/listAllUsersPost"
         const getUserSessionToken=localStorage.getItem("authorization")
         const transportProtocolParams={
             headers: {
@@ -178,7 +179,6 @@ const HomeScreen=()=>{
             const getPost=await fetch(url,transportProtocolParams);
             const getResponse = await getPost.json();
                 setLiveData(getResponse)
-                console.log()
             }
 
     useEffect(()=>{
