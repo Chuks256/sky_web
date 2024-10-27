@@ -2,6 +2,9 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useState } from "react";
 import { IoArrowBack } from "react-icons/io5";
+import ErrorModal from "./Error.modal";
+import NotificationModal from "./Notification.modal"
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
 position:absolute;
@@ -120,10 +123,28 @@ font-weight:bold;
 font-size:13px;
 width:300px;
 margin-top:110px;
+transition:linear,300ms;
+transform:scale(100%);
+&:focus{
+transform:scale(85%);
+}
 `;
 
 const CreateAccountModal=()=>{
   const [selectedItem,setSelectedItem]=useState(null)
+  const [showErrorMsg,setShowErrorMsg]=useState({
+    state:"none",
+    msg:""
+});
+
+const [getNickName,setNickName]=useState("");
+
+const [getBtnState,setBtnState]=useState("Create Account")
+
+const [notifyUser,setNotifyUser]=useState({
+  position:"-100px",
+  msg:""
+})
 
   const profilePics=[
     {
@@ -207,6 +228,8 @@ const CreateAccountModal=()=>{
     }            
   ]
 
+  const NavigationObj=useNavigate();
+
   const SelectProfilePics=(src="")=>{
     setSelectedItem(src);
   }
@@ -222,11 +245,108 @@ const CreateAccountModal=()=>{
     OpenAuthModalFunction();
   }
 
-    
+    // function for showing error message 
+    const RevealErrorMessage=(_msg="")=>{
+      setShowErrorMsg({
+          state:"flex",
+          msg:_msg
+      })
+      setTimeout(()=>{
+          setShowErrorMsg({
+              state:"none",
+              msg:""
+          })
+      },4000)
+  }
+
+
+
+  // function to handle nick name input box 
+  const HandleChange=(event)=>{
+    setNickName(event.target.value)
+  }
+
+
+      // function to notify user of successful event
+      const Notify_user_function=(msg="")=>{
+        setNotifyUser({
+            position:'50px',
+            msg:msg
+        })
+        setTimeout(()=>{
+            setNotifyUser({
+                position:'-100px',
+                msg:""
+            })
+        },3000)
+    }
+
+
+  // function to create user account 
+  const CreateUserAcct=async()=>{
+    const data=localStorage.getItem("UserData")
+    if(getNickName.length!=8){
+      RevealErrorMessage("Your NickName should be 8 character long");
+    }
+    else{
+      if(getNickName.length===8){
+        if(selectedItem===null){
+          RevealErrorMessage("You forgot to choose a profile pics");
+        }
+        else{
+          if(selectedItem!=null){
+            try{
+              setBtnState("Creating Account ...")
+              const sanitizedData=JSON.parse(data);
+            // configure user data params 
+            const data_params={
+                profileName:getNickName,
+                profilePics:selectedItem,
+                privateKey:sanitizedData.userActivePrivateKey,
+                ambientColor:sanitizedData.ambientColor
+            }
+            const url="http://localhost:4432/endpoint/1.0/createNewAccount`";
+
+            const configureDataTransportProtocol=
+              {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body:JSON.stringify(data_params)
+            }
+
+            // initialize transportation of user data 
+            const transportUserData=await fetch(url,configureDataTransportProtocol);
+            const getResponse=await transportUserData.json();
+            if(getResponse.message==="account successfuly created"){
+              localStorage.setItem("authorization",getResponse.authorization);
+              // return btn initial state 
+              setBtnState("Create Account")
+              // if successful remove initial persistent storage of user data 
+              localStorage.removeItem("UserData");
+              // notify User 
+              Notify_user_function("Account Created Successfully");
+              // cause a delay then move to main app 
+              setTimeout(()=>{
+                NavigationObj("/app");
+              },4000); //4 seconds delay then move to main app 
+            }
+            }
+            catch(error){
+              RevealErrorMessage("Something Went Wrong")
+            }
+          }
+        }
+      }
+    }
+  } 
 
     return(
       <>
         <Container className="acct_parent_modal">
+          <NotificationModal position={notifyUser.position} NotificationMsg={notifyUser.msg} />
+          <ErrorModal reveal={showErrorMsg.state} errorMsg={showErrorMsg.msg} />
         <AccountBottomSheet>
             <AccountBottomParentContainer>
                 {/* account header */}
@@ -236,8 +356,8 @@ const CreateAccountModal=()=>{
       
                  {/* Name container  */}
             <NameParentContainer>
-                <NameTxt>UserName</NameTxt>
-                <NameInputBox />
+                <NameTxt>Nick Name</NameTxt>
+                <NameInputBox placeHolder="Your Nick Name " value={getNickName} onChange={HandleChange} />
             </NameParentContainer>
       
             {/* image container section */}
@@ -259,7 +379,7 @@ const CreateAccountModal=()=>{
             </ProfileImageParentContainer>
             </SelectParentContainer>
       
-            <CreateAccountBtn>Create Account</CreateAccountBtn>
+            <CreateAccountBtn onClick={CreateUserAcct}>{getBtnState}</CreateAccountBtn>
             </AccountBottomParentContainer>
         </AccountBottomSheet>
         </Container>  

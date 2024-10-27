@@ -183,7 +183,6 @@ const AuthenticationModal=()=>{
                 if(response.message=="invalid address"){
                     RevealErrorMessage(response.message)
                     setImportBtnState("Import Account")
-
                 }
                 else{
                     if(response.message==="correct_address"){

@@ -231,8 +231,9 @@ const IntroAuthModal=(props)=>{
     }
 
     const getUserAmbientChoice=(colorType="")=>{
-                localStorage.setItem("UserData",JSON.stringify({ambientColor:colorType}))
+                localStorage.setItem("UserData",JSON.stringify({ambientColor:colorType,userActivePrivateKey:props.originalKey}))
             }
+        
     
     // fucntion for creating user account
     const createUserAccount=async()=>{
