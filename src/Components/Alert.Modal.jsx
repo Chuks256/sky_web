@@ -27,31 +27,66 @@ height:50%;
 border-radius:30px;
 `;
 
-// const PrivateTxtHeader = styled.h3`
-// font-size:16px;
-// `;
 
-// const ImportBtnParentContainer = styled.div`
-// display:flex;
-// flex-direction:column;
-// justify-content:center;
-// gap:20px;
-// `;
+const BtnParentContainer = styled.div`
+display:flex;
+flex-direction:column;
+justify-content:center;
+gap:20px;
+align-items:center;
+padding-top:70px;
+`;
 
-// const ImportUserAccountBtn=styled.button`
-// background-color:ivory;
-// padding:14px;
-// border-radius:5px;
-// font-weight:bold;
-// font-size:14px;
-// transition:linear,300ms;
-// transform:scale(100%);
+const AlertParentContainer = styled.div`
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+`;
 
-// &:hover{
-// transform:scale(85%);
-// }
-// `;
+const LogoutBtn=styled.button`
+background-color:red;
+padding:14px;
+border-radius:5px;
+font-weight:bold;
+font-size:14px;
+transition:linear,300ms;
+transform:scale(100%);
+color:ivory;
+width:300px;
+&:hover{
+transform:scale(85%);
+}
+`;
 
+const CloseBtn=styled.button`
+background-color:ivory;
+padding:14px;
+border-radius:5px;
+font-weight:bold;
+font-size:14px;
+width:300px;
+transition:linear,300ms;
+transform:scale(100%);
+&:hover{
+transform:scale(85%);
+}
+`;
+
+const ProceedToProfile=styled.button`
+width:300px;
+background-color:var(--sky-preference-bg-shade-color);
+padding:14px;
+color:ivory;
+border-radius:5px;
+font-weight:bold;
+font-size:14px;
+transition:linear,300ms;
+transform:scale(100%);
+&:hover{
+transform:scale(85%);
+}
+`;
 
 // const openAlertModal=()=>{
 // document.querySelector(".alert_modal").style.display="block"
@@ -69,7 +104,13 @@ const AlertModal=()=>{
         <>
         <Container className="alert_modal">
         <AlertModalElem>
-
+            <AlertParentContainer>
+            <BtnParentContainer>
+                <LogoutBtn>Log out ?</LogoutBtn>
+                <ProceedToProfile>Proceed to Profile</ProceedToProfile>
+                <CloseBtn>Close</CloseBtn>
+            </BtnParentContainer>
+            </AlertParentContainer>
         </AlertModalElem>
         </Container>
         </>
