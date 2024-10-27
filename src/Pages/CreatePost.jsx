@@ -203,8 +203,8 @@ const CreatePostScreen=()=>{
 
                 if(getResponse.message==="posted successfully"){
                     Notify_user_function("Rant successfully created");
+                    setrantBtnState("Rant Now")
                     setTimeout(()=>{
-                        setrantBtnState("Rant Now")
                         NavigateObj("/app");
                     },5000)
                 }
