@@ -214,7 +214,6 @@ const HomeScreen=()=>{
                          fetchData();
                     }
                 },[locationObj.pathname])
-                console.log(getAmbientColor)
 
     
 const openAlertModal=()=>{
@@ -248,7 +247,7 @@ const handleRantEvent=()=>{
             <PostParentContainer>
                 {
                     liveData.map((data)=>(
-                        <PostModal revealPost="flex" postimage={data.media.photos} profilepics={data.profilePics} username={data.profileName} timestamp={data.timePosted} postcontent={data.content} />
+                        <PostModal key={data._id} postOwnerId={data.postOwnerId} revealPost="flex" postimage={data.media.photos} profilepics={data.profilePics} username={data.profileName} timestamp={data.timePosted} postcontent={data.content} />
                     ))
                 }
            

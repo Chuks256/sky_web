@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import PostModal from "../Components/Post.modal"
 import { IoArrowBack } from "react-icons/io5";
 import { SlOptionsVertical } from "react-icons/sl";
 import BottomNavigation from "../Components/BottomNavigation";
-
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
 overflow-x:hidden;
@@ -111,6 +112,14 @@ padding-top:10px;
 `;
 
 const ProfileScreen=()=>{
+    const navigateObj=useNavigate();
+
+    useEffect(()=>{
+        if(localStorage.getItem("temporalUserId") != undefined){
+            
+        }
+    })
+
 
     const dummyData=[
         {
@@ -198,12 +207,20 @@ const ProfileScreen=()=>{
         }
     ]
 
+    const HandleBackBtn=()=>{
+        const getOtherUserId=localStorage.getItem("temporalUserId");
+        if(getOtherUserId != undefined){
+            localStorage.removeItem("temporalUserId");
+            navigateObj("/app");        
+        }
+    }
+
     return(
         <Container>
             <AppBarHeader>
                 {/* profile header */}
                 <ProfileHeaderContainer>
-                    <IoArrowBack style={{cursor:"pointer"}} size={25} />
+                    <IoArrowBack onClick={()=>{HandleBackBtn()}} style={{cursor:"pointer"}} size={25} />
                     <ProfileUserName>Degen</ProfileUserName>
                     <SlOptionsVertical style={{cursor:"pointer"}} size={20}/>
                 </ProfileHeaderContainer>

@@ -8,6 +8,7 @@ import { BiSolidDownvote } from "react-icons/bi";
 import { BsChatSquareText } from "react-icons/bs";
 import { BsChatSquareTextFill } from "react-icons/bs";
 import { SlOptionsVertical } from "react-icons/sl";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
 display:flex;
@@ -171,11 +172,19 @@ const MediaContainer = styled.div`
 
 
 const PostModal=(props)=>{
+  const navigateObj=useNavigate()
+
+  const HandleChanges=()=>{
+    localStorage.setItem("temporalUserId",props.postOwnerId);
+    navigateObj("/profile")
+  }
+
+
     return(
       <ParentContainer style={{display:`${props.revealPost}`}}>
-<Container >     
+<Container key={props.key} >     
 <ProfileContainer>
-<UserProfilePics style={{backgroundImage:`url(${props.profilepics})`}}></UserProfilePics>
+<UserProfilePics onClick={()=>{HandleChanges()}} style={{cursor:"pointer",backgroundImage:`url(${props.profilepics})`} }></UserProfilePics>
 
     <ProfileSubContainer>
    <ProfileDataContainer>
