@@ -22,7 +22,7 @@ align-items:center;
 const AlertModalElem=styled.div`
 background:var(--sky-bg-theme);
 bottom:0px;
-width:60%;
+width:80%;
 height:50%;
 border-radius:30px;
 `;
