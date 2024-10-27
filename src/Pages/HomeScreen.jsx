@@ -39,6 +39,10 @@ background:grey;
 border-radius:100px;
 border-style:solid;
 border-color:ivory;
+border-width:2px;
+background-size:cover;
+background-position:center;
+background-color:var(--sky-preference-default-shade)
 `;
 const UserPointBalance =styled.div`
 padding:10px;
@@ -80,6 +84,14 @@ const HomeScreen=()=>{
         msg:""
     });
 
+    const [get_user_data,set_user_data]=useState({});
+
+    const [getAmbientColor,setAmbientColor]=useState({
+        mainColor:"",
+        subColor:""
+    })
+
+
 
     const locationObj=useLocation()
 
@@ -98,6 +110,60 @@ const HomeScreen=()=>{
             },4000)
         }
 
+        // function to set user ambient color 
+    const configureUserAmbientColor=(ambientColorChoice="")=>{
+        switch(ambientColorChoice){
+            case"Cold":
+            const cold_color_scheme={
+                mainColor:"var(--sky-preference-default-color)",
+                subColor:"var(--sky-preference-default-shade)"
+            }
+            setAmbientColor(cold_color_scheme);
+            break;
+
+            case "Hot":
+                const hot_color_scheme={
+                    mainColor:"var(--sky-preference-fire-color)",
+                    subColor:"var(--sky-preference-fire-shade)"
+                }
+                setAmbientColor(hot_color_scheme);
+                break;
+            
+            case "Royal":
+                const royal_color_scheme={
+                    mainColor:"var(--sky-preference-royal-color)",
+                    subColor:"var(--sky-preference-royal-shade)"
+                }
+                setAmbientColor(royal_color_scheme);
+                break;
+            
+            case "Pink":
+                const pink_color_scheme={
+                    mainColor:"var(--sky-preference-pink-color)",
+                    subColor:"var(--sky-preference-pink-shade)"
+                }
+                setAmbientColor(pink_color_scheme);
+                break;
+            
+            case "Soul":
+                const soul_color_scheme={
+                    mainColor:"var(--sky-preference-soul-color)",
+                    subColor:"var(--sky-preference-soul-shade)"
+                }
+                setAmbientColor(soul_color_scheme);
+                break;
+
+                
+            case "SunShine":
+                const sunshine_color_scheme={
+                    mainColor:"var(--sky-preference-summer-color)",
+                    subColor:"var(--sky-preference-summer-shade)"
+                }
+                setAmbientColor(sunshine_color_scheme);
+                break;
+        }
+    }
+
     useEffect(()=>{
         if(locationObj.pathname==="/app"){
 
@@ -113,17 +179,18 @@ const HomeScreen=()=>{
                         }
                     const getUserData=await fetch(url,transportProtocolParams);
                     const getResponse = await getUserData.json();
-                    console.log(getResponse);
+                    set_user_data(getResponse)
+                    configureUserAmbientColor(getResponse.ambientColor)
                             }
                             catch{
                                 RevealErrorMessage("Something went wrong")       
                             }
                         }
-
-                        fetchData();
+                         fetchData();
                     }
                 },[locationObj.pathname])
-  
+                console.log(getAmbientColor)
+
     const dummyData=[
         {
             username:"JaneTheBaddie",
@@ -218,10 +285,10 @@ const HomeScreen=()=>{
         <Container>
             {/* Header  */}
             {/* Header */}
-            <AppBarHeader>
+            <AppBarHeader style={{background:`${getAmbientColor.mainColor}`}}>
                 <AppBarItemsContainer>
-                    <UserProfilePics></UserProfilePics>
-                    <UserPointBalance>
+                    <UserProfilePics style={{backgroundImage:`url(${get_user_data.profilePics})`}}></UserProfilePics>
+                    <UserPointBalance style={{background:`${getAmbientColor.subColor}`}} >
                     <PiStarFourFill  size={20}/>
                     {skyPoint}
                     <IoMdArrowDropdown size={30} style={{cursor:"pointer"}} />
@@ -240,7 +307,7 @@ const HomeScreen=()=>{
            
             </PostParentContainer>
 
-            <PostButton>Post</PostButton>
+            <PostButton style={{backgroundColor:`${getAmbientColor.subColor}`}}>Post</PostButton>
 
             {/* Bottom Navigaion */}
             <BottomNavigation />

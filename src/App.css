@@ -7,13 +7,19 @@
 :root{
   --sky-bg-theme:#101111;
   --sky-txt-color:ivory;
+  --sky-default-color:#2E97FF;
   --sky-preference-default-color:linear-gradient(to bottom, #2E97FF,rgba(16 ,17, 17, 0%) );
- --sky-default-color:#2E97FF;
   --sky-preference-default-shade:rgba(46, 151, 255, 0.451);
   --sky-preference-fire-color:linear-gradient(to bottom, #FF2E2E,rgba(16 ,17, 17, 0%)  );
-  --sky-preference-fire-shade:rgba(255,46,46,45%);
+  --sky-preference-fire-shade:#FF2E2E;
   --sky-preference-royal-color:linear-gradient(to bottom, #E02EFF,rgba(16 ,17, 17, 0%)  );
-  --sky-preference-summer-color:linear-gradient(to bottom, #FFE02E,rgba(16 ,17, 17, 0%)  );
+  --sky-preference-royal-shade:#E02EFF;
+  --sky-preference-summer-color:linear-gradient(to bottom, #FFD220,rgba(16 ,17, 17, 0%)  );
+  --sky-preference-summer-shade:#FFD220;
+  --sky-preference-pink-color:linear-gradient(to bottom, #FF2079,rgba(16 ,17, 17, 0%)  );
+  --sky-preference-pink-shade:#FF2079;
+  --sky-preference-soul-color:linear-gradient(to bottom, #45FF20,rgba(16 ,17, 17, 0%)  );
+  --sky-preference-soul-shade:#45FF20;
   --sky-preference-bg-shade-color:#191a1a;
   --sky-preference-bg-modified-shade-color:linear-gradient(to bottom, #2e97ff73,rgba(16, 17, 17, 0) );
   --sky-text-size:12px;
