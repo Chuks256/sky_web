@@ -4,6 +4,7 @@ import { IoArrowBack } from "react-icons/io5";
 import { SlOptionsVertical } from "react-icons/sl";
 import { TbPhotoFilled } from "react-icons/tb";
 import BottomNavigation from "../Components/BottomNavigation";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
 display:flex;
@@ -96,11 +97,15 @@ background:var(--sky-preference-bg-shade-color);
 `;
 
 const CreatePostScreen=()=>{
+
+    const NavigateObj=useNavigate();
+
+
     return(
         <>
            <Container>
              <CreateRantHeader>
-                <IoArrowBack size={20}/>
+                <IoArrowBack onClick={()=>{ NavigateObj("/app") }} style={{cursor:"pointer"}} size={20}/>
                 <RantTxt>Rant</RantTxt>
                 <SlOptionsVertical/>
             </CreateRantHeader>
