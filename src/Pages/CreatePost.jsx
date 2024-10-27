@@ -182,6 +182,8 @@ const CreatePostScreen=()=>{
         }
         else{
             try{
+                setrantBtnState("Please wait...")
+
                 const url=`http://localhost:4432/endpoint/1.0/postNewContent`;
                 const getUserSessionToken=localStorage.getItem("authorization")
 
@@ -199,14 +201,13 @@ const CreatePostScreen=()=>{
 
                 const post_rant=await fetch(url,Params);
                 const getResponse = await post_rant.json();
-                setrantBtnState("Please wait...")
-
+            
                 if(getResponse.message==="posted successfully"){
                     Notify_user_function("Rant successfully created");
                     setrantBtnState("Rant Now")
                     setTimeout(()=>{
                         NavigateObj("/app");
-                    },5000)
+                    },4000)
                 }
             }
             catch(err){
