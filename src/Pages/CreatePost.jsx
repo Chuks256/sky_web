@@ -184,7 +184,8 @@ const CreatePostScreen=()=>{
             try{
                 setrantBtnState("Please wait...")
 
-                const url=`https://sky-node.onrender.com/endpoint/1.0/endpoint/postNewContent`;
+                const url=`https://sky-node.onrender.com/endpoint/1.0/postNewContent`;
+                const Devurl=`https://localhost:4432/endpoint/1.0/endpoint/postNewContent`;
                 const getUserSessionToken=localStorage.getItem("authorization")
 
                 const Params={
