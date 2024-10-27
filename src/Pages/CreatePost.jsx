@@ -63,6 +63,12 @@ width:290px;
 font-weight:bold;
 font-size:13px;
 border-radius:7px;
+transition:linear,300ms;
+transform:scale(100%);
+
+&:focus{
+transform:scale(85%);
+}
 `
 
 const RantMediaOptionContainer = styled.div`
@@ -115,7 +121,7 @@ const CreatePostScreen=()=>{
 
     const [limitColor,setLimitColor]=useState({txt:"ivory",bg:"#191a1a"});
     
-    const [limitTxt,setLimitTxt]=useState(`${0}`)
+    const [limitTxt,setLimitTxt]=useState(`${0}/100 limit`)
 
 
     const NavigateObj=useNavigate();
@@ -126,9 +132,10 @@ const CreatePostScreen=()=>{
             if(rantValue.length>100){
                 setLimitColor({
                     txt:"ivory",
-                    bg:"var(--sky-default-color)"
+                    bg:"var(--sky-default-color)",
                 })
                 setLimitTxt("Limit reached");
+
             }
             else{
                 setLimitTxt(`${rantValue.length}/100 limit `);
@@ -137,7 +144,6 @@ const CreatePostScreen=()=>{
                     bg:"#191a1a"
                 })
                 setuserRant(rantValue);
-                console.log(rantValue.length)
             }
         }
 
@@ -170,12 +176,51 @@ const CreatePostScreen=()=>{
     }
 
 
+    const HandleGenerateRantBtn=async()=>{
+        if(userRant.length===0){
+            RevealErrorMessage("You cannot create empty rant");
+        }
+        else{
+            try{
+                const url=`http://localhost:4432/endpoint/1.0/postNewContent`;
+                const getUserSessionToken=localStorage.getItem("authorization")
+
+                const Params={
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json',
+                      'authorization': `${getUserSessionToken}`
+                    },
+                    body:JSON.stringify({
+                        postContent:userRant,
+                        media:""
+                    })
+                }
+
+                const post_rant=await fetch(url,Params);
+                const getResponse = await post_rant.json();
+                setrantBtnState("Please wait...")
+
+                if(getResponse.message==="posted successfully"){
+                    Notify_user_function("Rant successfully created");
+                    setTimeout(()=>{
+                        setrantBtnState("Rant Now")
+                        NavigateObj("/app");
+                    },5000)
+                }
+            }
+            catch(err){
+                RevealErrorMessage("Something went wrong");
+            }
+        }
+    }
+
+
 
     return(
         <>
            <Container>
            <NotificationModal position={notifyUser.position} NotificationMsg={notifyUser.msg} />
-           <ErrorModal reveal={showErrorMsg.state} errorMsg={showErrorMsg.msg} />
              <CreateRantHeader>
                 <IoArrowBack onClick={()=>{ NavigateObj("/app") }} style={{cursor:"pointer"}} size={25}/>
                 <RantTxt>Rant</RantTxt>
@@ -184,7 +229,7 @@ const CreatePostScreen=()=>{
 
             {/* input box */}
             <ParentContainer>
-            <RantInputBox onChange={handleRantChange} placeholder="What do you want to rant about ?"></RantInputBox>
+            <RantInputBox value={userRant} onChange={handleRantChange} placeholder="What do you want to rant about ?" ></RantInputBox>
             </ParentContainer>
 
             <RantParentMediaContainer>
@@ -194,9 +239,11 @@ const CreatePostScreen=()=>{
             </RantMediaOptionContainer>
             <RantLimit style={{background:`${limitColor.bg}`,color:`${limitColor.txt}`}}>{limitTxt}</RantLimit>
             </RantParentMediaContainer>
-           <CreateRantBtn>{rantBtnState}</CreateRantBtn>
+           <CreateRantBtn onClick={()=>{HandleGenerateRantBtn()}}>{rantBtnState}</CreateRantBtn>
         </Container>
         <BottomNavigation />
+        <ErrorModal reveal={showErrorMsg.state} errorMsg={showErrorMsg.msg} />
+         
         </>
     )
 }
