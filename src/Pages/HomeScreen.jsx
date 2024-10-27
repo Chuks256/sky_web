@@ -98,27 +98,31 @@ const HomeScreen=()=>{
             },4000)
         }
 
-    useEffect(async()=>{
+    useEffect(()=>{
         if(locationObj.pathname==="/app"){
-            try{
-    const getUserSessionToken=localStorage.getItem("authorization")
-    const url="http://localhost:4432/endpoint/1.0/getUserData"
-    const transportProtocolParams={
-        headers: {
-            'Content-Type': 'application/json',
-            'authorization': `${getUserSessionToken}`
-          }
-        }
-    
-    const getUserData=await fetch(url,transportProtocolParams);
-    const getResponse = await getUserData.json();
-    console.log(getResponse);
-            }
-            catch{
-                RevealErrorMessage("Something went wrong")       
-            }
-        }
-    },[locationObj.pathname])
+
+            const fetchData=async()=>{
+                try{
+                    const getUserSessionToken=localStorage.getItem("authorization")
+                    const url="http://localhost:4432/endpoint/1.0/getUserData"
+                    const transportProtocolParams={
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'authorization': `${getUserSessionToken}`
+                          }
+                        }
+                    const getUserData=await fetch(url,transportProtocolParams);
+                    const getResponse = await getUserData.json();
+                    console.log(getResponse);
+                            }
+                            catch{
+                                RevealErrorMessage("Something went wrong")       
+                            }
+                        }
+
+                        fetchData();
+                    }
+                },[locationObj.pathname])
   
     const dummyData=[
         {

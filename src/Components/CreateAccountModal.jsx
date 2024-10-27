@@ -332,6 +332,11 @@ const [notifyUser,setNotifyUser]=useState({
                 NavigationObj("/app");
               },4000); //4 seconds delay then move to main app 
             }
+            else{
+              if(getResponse.message==="Account already exist"){
+                RevealErrorMessage("Account Already Exist")      
+              }
+            }
             }
             catch(error){
               RevealErrorMessage("Something Went Wrong")
