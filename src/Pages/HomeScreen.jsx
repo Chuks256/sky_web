@@ -165,9 +165,23 @@ const HomeScreen=()=>{
         }
     }
 
+    const GetAllPost=async()=>{
+        const url="http://localhost:4432/endpoint/1.0/listAllUsersPost"
+        const getUserSessionToken=localStorage.getItem("authorization")
+        const transportProtocolParams={
+            headers: {
+                'Content-Type': 'application/json',
+                'authorization': `${getUserSessionToken}`
+              }
+            }
+            const getPost=await fetch(url,transportProtocolParams);
+            const getResponse = await getPost.json();
+            console.log(getResponse)
+    }
+
     useEffect(()=>{
         if(locationObj.pathname==="/app"){
-
+           localStorage.removeItem("authorization") 
             const fetchData=async()=>{
                 try{
                     const getUserSessionToken=localStorage.getItem("authorization")
@@ -182,6 +196,15 @@ const HomeScreen=()=>{
                     const getResponse = await getUserData.json();
                     set_user_data(getResponse)
                     configureUserAmbientColor(getResponse.ambientColor)
+                    setSkyPointBalance(`${getResponse.points} sky`)
+                    if(getResponse){
+                        try{
+                            GetAllPost();
+                        }
+                        catch(err){
+                            console.log(err)
+                        }
+                    }
                             }
                             catch{
                                 RevealErrorMessage("Something went wrong")       
