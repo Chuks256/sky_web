@@ -61,9 +61,9 @@ font-size:11px;
 
 const PostContent = styled.div`
 font-size:12px;
-width:290px;
+width:260px;
 align-items:center;
-padding-left:70px;
+padding-left:75px;
 `;
 
 const ReactionContainer = styled.div `
@@ -188,7 +188,7 @@ const PostModal=(props)=>{
 </ProfileContainer>
  
     {/* post content section */}
-    <PostContent>{props.postcontent}{props.postimage.length} </PostContent>
+    <PostContent>{props.postcontent}</PostContent>
 
     
     {/* media content section */}

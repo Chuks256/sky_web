@@ -178,7 +178,7 @@ const HomeScreen=()=>{
             }
             const getPost=await fetch(url,transportProtocolParams);
             const getResponse = await getPost.json();
-                setLiveData(getResponse)
+                setLiveData(getResponse.reverse())
             }
 
     useEffect(()=>{
