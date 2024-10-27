@@ -84,6 +84,8 @@ const HomeScreen=()=>{
         msg:""
     });
 
+    const [liveData,setLiveData]=useState([]);
+
     const [get_user_data,set_user_data]=useState({});
 
     const [getAmbientColor,setAmbientColor]=useState({
@@ -116,7 +118,7 @@ const HomeScreen=()=>{
             case"Cold":
             const cold_color_scheme={
                 mainColor:"var(--sky-preference-default-color)",
-                subColor:"var(--sky-preference-default-shade)"
+                subColor:"#2E97FF"
             }
             setAmbientColor(cold_color_scheme);
             break;
@@ -175,8 +177,9 @@ const HomeScreen=()=>{
             }
             const getPost=await fetch(url,transportProtocolParams);
             const getResponse = await getPost.json();
-            console.log(getResponse)
-    }
+                setLiveData(getResponse)
+                console.log()
+            }
 
     useEffect(()=>{
         if(locationObj.pathname==="/app"){
@@ -200,7 +203,7 @@ const HomeScreen=()=>{
                             GetAllPost();
                         }
                         catch(err){
-                            console.log(err)
+                            RevealErrorMessage("Something went wrong")
                         }
                     }
                             }
@@ -212,92 +215,6 @@ const HomeScreen=()=>{
                     }
                 },[locationObj.pathname])
                 console.log(getAmbientColor)
-
-    const dummyData=[
-        {
-            username:"JaneTheBaddie",
-            timestamp:`${new Date().getSeconds()} Sec ago`,
-            postcontent:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore ",
-            postimage:[
-                {
-                    src:"https://i.pinimg.com/control/564x/7e/1e/42/7e1e42f47a4af412bfce7eee1df29708.jpg"
-                }
-            ]
-        },
-        {
-            username:"JaneTheBaddie",
-            timestamp:`${new Date().getSeconds()} Sec ago`,
-            postcontent:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore",
-            postimage:[
-                {
-                    src:"https://i.pinimg.com/736x/20/7e/f0/207ef089a3b11f0e52d2a40c80c7fc68.jpg"
-                },
-                {
-                    src:"https://i.pinimg.com/control/564x/43/d9/5b/43d95b2312ff74f118368708ea3438a5.jpg"
-                }
-            ]
-        },
-        {
-            username:"JaneTheBaddie",
-            timestamp:`${new Date().getSeconds()} Sec ago`,
-            postcontent:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore",
-            postimage:[
-                {src:"https://i.pinimg.com/control/474x/75/83/9c/75839c1c207394c929306c04871626c6.jpg" 
-                },
-                {
-                    src:"https://i.pinimg.com/736x/a6/46/11/a6461171b3897ba244050f60c0b63c47.jpg"
-                },
-                {
-                     src:"https://i.pinimg.com/control/564x/03/7a/1e/037a1ee9a1b9d4222f02acf4aa267c8f.jpg",
-                },
-                {
-                    src:"https://i.pinimg.com/564x/c6/cd/c2/c6cdc285dc0ec9b47aed926de291e0a1.jpg"
-                }
-            ]
-        },
-        {
-            username:"JaneTheBaddie",
-            timestamp:`${new Date().getSeconds()} Sec ago`,
-            postcontent:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore",
-            postimage:[
-                {src:"https://i.pinimg.com/474x/90/77/25/907725c1a28c7258a4ff4b602af20c9e.jpg"},
-                    {src:"https://i.pinimg.com/control/474x/e4/90/4e/e4904ed0b889260f9f428fb7a4d48b07.jpg"},
-                    {src:"https://i.pinimg.com/736x/3e/e5/21/3ee5216cbcbb6c11ff3ad37d2bbe9e5a.jpg"},
-            ]
-        },
-        {
-            username:"JaneTheBaddie",
-            timestamp:`${new Date().getSeconds()} Sec ago`,
-            postcontent:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore",
-            postimage:[
-                {src:"https://i.pinimg.com/control/564x/8b/13/79/8b137979ab5e74ef71563ca5066f0e1e.jpg"}
-            ]
-        },
-        {
-            username:"JaneTheBaddie",
-            timestamp:`${new Date().getSeconds()} Sec ago`,
-            postcontent:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et",
-            postimage:[]
-        },
-        {
-            username:"JaneTheBaddie",
-            timestamp:`${new Date().getSeconds()} Sec ago`,
-            postcontent:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore ",
-            postimage:[]
-        },
-        {
-            username:"JaneTheBaddie",
-            timestamp:`${new Date().getSeconds()} Sec ago`,
-            postcontent:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore ",
-            postimage:[]
-        },
-        {
-            username:"JaneTheBaddie",
-            timestamp:`${new Date().getSeconds()} Sec ago`,
-            postcontent:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore ",
-            postimage:[]
-        }
-    ]
 
     
 const openAlertModal=()=>{
@@ -330,8 +247,8 @@ const handleRantEvent=()=>{
             {/* Post section */}
             <PostParentContainer>
                 {
-                    dummyData.map((data)=>(
-                        <PostModal revealPost="flex" postimage={data.postimage} username={data.username} timestamp={data.timestamp} postcontent={data.postcontent} />
+                    liveData.map((data)=>(
+                        <PostModal revealPost="flex" postimage={data.media.photos} profilepics={data.profilePics} username={data.profileName} timestamp={data.timePosted} postcontent={data.content} />
                     ))
                 }
            

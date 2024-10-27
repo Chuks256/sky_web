@@ -41,6 +41,8 @@ padding:16px;
 width:4px;
 height:4px;
 border-radius:100px;
+background-size:cover;
+background-position:center;
 `;
 
 const ProfileDataContainer = styled.div`
@@ -173,7 +175,7 @@ const PostModal=(props)=>{
       <ParentContainer style={{display:`${props.revealPost}`}}>
 <Container >     
 <ProfileContainer>
-<UserProfilePics></UserProfilePics>
+<UserProfilePics style={{backgroundImage:`url(${props.profilepics})`}}></UserProfilePics>
 
     <ProfileSubContainer>
    <ProfileDataContainer>
