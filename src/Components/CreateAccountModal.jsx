@@ -305,7 +305,7 @@ const [notifyUser,setNotifyUser]=useState({
                 privateKey:sanitizedData.userActivePrivateKey,
                 ambientColor:sanitizedData.ambientColor
             }
-            const url="http://localhost:4432/endpoint/1.0/createNewAccount`";
+            const url="https://sky-node.onrender.com/endpoint/1.0/createNewAccount";
 
             const configureDataTransportProtocol=
               {
