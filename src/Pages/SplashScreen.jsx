@@ -96,7 +96,7 @@ const SplashScreen=()=>{
     // initialize auth and intro bottomsheet modal 
     const InitializeRantBtn=async(event)=>{
         // check if localstorage is null or not 
-        const getUserSessionKey=localStorage.getItem("_Authorization");
+        const getUserSessionKey=localStorage.getItem("authorization");
         if(getUserSessionKey===null || getUserSessionKey.length===0){
               event.stopPropagation()
               const OpenIntroAuthModal=document.querySelector(".IntroAuth_parent_modal");

@@ -242,10 +242,17 @@ const IntroAuthModal=(props)=>{
         }
         else{
             if(SelectedItem!=null){
-                const OpenAcctCreationModal=document.querySelector(".acct_parent_modal");
-                OpenAcctCreationModal.style.display="block";
-                await getUserAmbientChoice(SelectedItem);
-                CloseIntroAuthContainer();
+                if(props.truncatedKey==="Generating private key"){
+                    RevealErrorMessage("Please wait while we generate your private key")
+                }
+                else{
+                    if(props.truncatedKey != "Generating private key"){
+                        const OpenAcctCreationModal=document.querySelector(".acct_parent_modal");
+                    OpenAcctCreationModal.style.display="block";
+                    await getUserAmbientChoice(SelectedItem);
+                    CloseIntroAuthContainer();
+                    }
+                }
             }
         }
     } 
