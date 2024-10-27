@@ -178,7 +178,7 @@ const AuthenticationModal=()=>{
                 }
 
                 // send data to server 
-                const ImportUserData=await fetch(devUrl,Params);
+                const ImportUserData=await fetch(url,Params);
                 const response=await ImportUserData.json();
                 if(response.message=="invalid address"){
                     RevealErrorMessage(response.message)
