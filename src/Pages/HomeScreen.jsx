@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { RiNotification4Fill } from "react-icons/ri";
 import { PiStarFourFill } from "react-icons/pi";
 import { IoMdArrowDropdown } from "react-icons/io";
 import {useState} from "react"
+import { useLocation } from "react-router-dom";
 
 // import components 
 import BottomNavigation from "../Components/BottomNavigation";
 import PostModal from "../Components/Post.modal";
 import PointBalanceModal from "../Components/PointBalance.modal";
+import ErrorModal from "../Components/Error.modal";
 
 const Container = styled.div`
 display:flex;
@@ -73,7 +75,51 @@ margin-left:250px;
 
 const HomeScreen=()=>{
     const [skyPoint,setSkyPointBalance]=useState("20k Sky")
+    const [showErrorMsg,setShowErrorMsg]=useState({
+        state:"none",
+        msg:""
+    });
+
+
+    const locationObj=useLocation()
+
     
+        // function for showing error message 
+        const RevealErrorMessage=(_msg="")=>{
+            setShowErrorMsg({
+                state:"flex",
+                msg:_msg
+            })
+            setTimeout(()=>{
+                setShowErrorMsg({
+                    state:"none",
+                    msg:""
+                })
+            },4000)
+        }
+
+    useEffect(async()=>{
+        if(locationObj.pathname==="/app"){
+            try{
+    const getUserSessionToken=localStorage.getItem("authorization")
+    const url="http://localhost:4432/endpoint/1.0/getUserData"
+    const transportProtocolParams={
+        headers: {
+            'Content-Type': 'application/json',
+            'authorization': `${getUserSessionToken}`
+          }
+        }
+    
+    const getUserData=await fetch(url,transportProtocolParams);
+    const getResponse = await getUserData.json();
+    console.log(getResponse);
+            }
+            catch{
+                RevealErrorMessage("Something went wrong")       
+            }
+        }
+    },[locationObj.pathname])
+  
     const dummyData=[
         {
             username:"JaneTheBaddie",
@@ -160,6 +206,8 @@ const HomeScreen=()=>{
         }
     ]
 
+    
+
     return(
         <>
         {/* <PointBalanceModal /> */}
@@ -167,7 +215,6 @@ const HomeScreen=()=>{
             {/* Header  */}
             {/* Header */}
             <AppBarHeader>
-
                 <AppBarItemsContainer>
                     <UserProfilePics></UserProfilePics>
                     <UserPointBalance>
@@ -193,6 +240,7 @@ const HomeScreen=()=>{
 
             {/* Bottom Navigaion */}
             <BottomNavigation />
+            <ErrorModal reveal={showErrorMsg.state} errorMsg={showErrorMsg.msg} />
         </Container>
         </>
     )
