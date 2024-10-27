@@ -14,7 +14,7 @@ left:0px;
 background:rgba(217,217,217,31%);
 backdrop-filter:blur(4px);
 z-index:1;
-display:flex;
+display:none;
 justify-content:center;
 align-items:center;
 `;
@@ -93,15 +93,17 @@ document.querySelector(".alert_modal").style.display="none";
 OpenAuthModalAccount();
 }
 
-const logoutUser=()=>{
- localStorage.removeItem("authorization");
+
+
+
+
+const AlertModal=()=>{     
     const navigateObj=useNavigate();
-    navigateObj("/")
-}
 
-
-
-const AlertModal=()=>{       
+    const logoutUser=()=>{
+        localStorage.removeItem("authorization");
+           navigateObj("/")
+       }  
     return(
         <>
         <Container className="alert_modal">
