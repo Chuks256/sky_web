@@ -181,7 +181,6 @@ const HomeScreen=()=>{
 
     useEffect(()=>{
         if(locationObj.pathname==="/app"){
-           localStorage.removeItem("authorization") 
             const fetchData=async()=>{
                 try{
                     const getUserSessionToken=localStorage.getItem("authorization")
