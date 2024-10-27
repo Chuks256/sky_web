@@ -5,6 +5,7 @@ import { SlOptionsVertical } from "react-icons/sl";
 import { TbPhotoFilled } from "react-icons/tb";
 import BottomNavigation from "../Components/BottomNavigation";
 import NotificationModal from "../Components/Notification.modal";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
 display:flex;
@@ -77,12 +78,19 @@ text-align:center;
 
 const TaskScreen=()=>{
     const taskdummyData=[]
+    const navigateObj=useNavigate();
+
+    const HandleBackBtn=()=>{
+        navigateObj("/app")
+    }
+
+
     return(
         <>
         <NotificationModal />
            <Container>
              <TaskHeader>
-                <IoArrowBack size={20}/>
+                <IoArrowBack style={{cursor:"pointer"}} onClick={()=>{HandleBackBtn()}} size={20}/>
                 <TaskTxt>Task</TaskTxt>
                 <SlOptionsVertical/>
             </TaskHeader>

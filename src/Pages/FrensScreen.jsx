@@ -4,7 +4,7 @@ import { IoArrowBack } from "react-icons/io5";
 import { SlOptionsVertical } from "react-icons/sl";
 import BottomNavigation from "../Components/BottomNavigation";
 import NotificationModal from "../Components/Notification.modal";
-
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
 display:flex;
@@ -136,11 +136,17 @@ font-size:14px;
 
 const FrensScreen=()=>{
     const FrendummyData=[]
+    const navigateObj=useNavigate();
+
+    const HandleBackBtn=()=>{
+        navigateObj("/app")
+    }
+
     return(
         <>
            <Container>
         <FrenHeader>
-                <IoArrowBack size={20}/>
+                <IoArrowBack onClick={()=>{HandleBackBtn()}} style={{cursor:"pointer"}} size={20}/>
                 <FrenTxt>Invite</FrenTxt>
                 <SlOptionsVertical/>
             </FrenHeader>

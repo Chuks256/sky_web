@@ -8,6 +8,8 @@ import { BsPeopleFill } from "react-icons/bs";
 import { BsPeople } from "react-icons/bs";
 import styled from "styled-components"
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import NotificationModal from "./Notification.modal";
 
 const Container = styled.div`
 position:fixed;
@@ -61,6 +63,26 @@ flex-direction:column;
 font-size:12px`;
 
 const BottomNavigation = ()=>{
+const [notifyUser,setNotifyUser]=useState({
+    position:"-100px",
+    msg:""
+  })
+
+  
+    // function to notify user of successful event
+    const Notify_user_function=(msg="")=>{
+        setNotifyUser({
+            position:'50px',
+            msg:msg
+        })
+        setTimeout(()=>{
+            setNotifyUser({
+                position:'-100px',
+                msg:""
+            })
+        },3000)
+    }
+
     const NavigateObj=useNavigate();
 
     const HandleFrenNav=()=>{
@@ -71,13 +93,21 @@ const BottomNavigation = ()=>{
         NavigateObj("/app")
     }
 
+    const HandleTaskNav=()=>{
+        NavigateObj("/task")
+    }
+
+    const HandleSearchNav=()=>{
+    }
+
+
 
     return(
-        <Container>
+             <Container>
             <BottomNavigationContainer>
                 <HomeNavContainer onClick={()=>{HandleHomeNav()}} style={{cursor:"pointer"}}><GoHome size={25} /> Home</HomeNavContainer>
-                <SearchNavContainer style={{cursor:"pointer"}}><IoSearch size={25} /> Search</SearchNavContainer>
-                <TaskNavContainer style={{cursor:"pointer"}}><RiTaskLine size={25} /> Task</TaskNavContainer>
+                <SearchNavContainer style={{cursor:"pointer"}} onClick={()=>{HandleSearchNav()}}><IoSearch size={25} /> Search</SearchNavContainer>
+                <TaskNavContainer style={{cursor:"pointer"}} onClick={()=>{HandleTaskNav()}}><RiTaskLine size={25} /> Task</TaskNavContainer>
                 <FriendNavContainer onClick={()=>{HandleFrenNav()}} style={{cursor:"pointer"}} ><BsPeople size={25}/> Frens</FriendNavContainer>
             </BottomNavigationContainer>
         </Container>
