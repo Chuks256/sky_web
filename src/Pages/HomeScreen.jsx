@@ -172,10 +172,12 @@ const HomeScreen=()=>{
         const MainApp=document.querySelector(".main_app");
         if(toggle==="no"){
             load_modal.style.display="none"
+            MainApp.style.display="flex";
         }
         else
         if(toggle==="yes"){
             load_modal.style.display="flex";
+            MainApp.style.display="none"
         }
     }
       

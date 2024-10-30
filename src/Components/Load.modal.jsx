@@ -10,7 +10,7 @@ width:100%;
 height:100%;
 top:0px;
 left:0px;
-background:rgba(217,217,200,5%);
+background:var(--sky-bg-theme);
 backdrop-filter:blur(6px);
 z-index:1;
 overflow-y:hidden;

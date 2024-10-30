@@ -204,6 +204,9 @@ const PostModal=(props)=>{
   const [getDownBooleanVote,setDownBooleanVote]=useState(false)
   const [getDownVote,setDownVote]=useState(null)
 
+  const [getComment,setComment]=useState(null);
+
+
   const HandleChanges=()=>{
     localStorage.setItem("temporalUserId",props.postOwnerId);
     navigateObj("/profile")
@@ -239,8 +242,12 @@ const PostModal=(props)=>{
     setDownVote(props.postId)
   }
 
+  // move to post comment section 
+  const commentHandler=()=>{
+    localStorage.setItem("Specific_POST_ID",props.postId);
+    navigateObj("/comment")
+  }
 
-  
 
 
     return(
@@ -288,7 +295,7 @@ const PostModal=(props)=>{
       <BiSolidDownvote size={19} onClick={()=>{HandleUnDownVote()}}  style={{cursor:"pointer"}}  />
     )
   }
-   <BsChatSquareText size={19} />
+   <BsChatSquareText onClick={()=>{commentHandler()}}  size={19}  style={{cursor:"pointer"}} />
  </ReactionContainer>
 
 </Container>
