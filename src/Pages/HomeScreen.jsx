@@ -267,7 +267,7 @@ const handleRantEvent=()=>{
             <PostParentContainer>
                 {
                     liveData.map((data)=>(
-                        <PostModal key={data._id} postId={data._id} postOwnerId={data.postOwnerId} revealPost="flex" postimage={data.media.photos} profilepics={data.profilePics} username={data.profileName} timestamp={data.timePosted} postcontent={data.content} />
+                        <PostModal key={data._id}  postId={data._id} postOwnerId={data.postOwnerId} revealPost="flex" postimage={data.media.photos} profilepics={data.profilePics} username={data.profileName} timestamp={data.timePosted} postcontent={data.content} />
                     ))
                 }
            

@@ -204,12 +204,49 @@ const PostModal=(props)=>{
   const [getDownBooleanVote,setDownBooleanVote]=useState(false)
   const [getDownVote,setDownVote]=useState(null)
 
-  const [getComment,setComment]=useState(null);
-
 
   const HandleChanges=()=>{
     localStorage.setItem("temporalUserId",props.postOwnerId);
     navigateObj("/profile")
+  }
+
+  const upVoteHandler=async(toggle="yes")=>{
+    if(toggle==="yes"){
+      const url='http://localhost:4432/endpoint/1.0/upvote';
+    const getUserSessionToken=localStorage.getItem("authorization")
+    const options={
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'authorization': `${getUserSessionToken}`
+      },
+      body:JSON.stringify({
+          postId:props.postId,
+          accountId:props.postOwnerId
+      })
+    }
+    const upvote_post=await fetch(url,options);
+    const response = await upvote_post.json();
+    console.log(response)
+    }
+    else
+    if(toggle==="no"){
+      const url='http://localhost:4432/endpoint/1.0/unUpvote';
+      const getUserSessionToken=localStorage.getItem("authorization")
+      const options={
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'authorization': `${getUserSessionToken}`
+        },
+        body:JSON.stringify({
+            postId:props.postId,
+        })
+      }
+      const unupvote_post=await fetch(url,options);
+      const response = await unupvote_post.json();
+      console.log(response)
+    }
   }
 
   const HandleUpVote=async()=>{
@@ -218,11 +255,61 @@ const PostModal=(props)=>{
     }
     setHandleVote(props.postId);
     setBooleanVote(true);
+    try{
+      upVoteHandler("yes");
+    }
+    catch(err){
+      console.log('something went wron')
+    }
   }
 
+
+  const DownVoteHandler=async(toggle="")=>{
+    if(toggle==="yes"){
+      const url='http://localhost:4432/endpoint/1.0/downVote';
+    const getUserSessionToken=localStorage.getItem("authorization")
+    const options={
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'authorization': `${getUserSessionToken}`
+      },
+      body:JSON.stringify({
+          postId:props.postId,
+      })
+    }
+    const downvote_post=await fetch(url,options);
+    const response = await downvote_post.json();
+    console.log(response)
+    }
+    else if(toggle==="no"){
+      const url='http://localhost:4432/endpoint/1.0/unDownVote';
+    const getUserSessionToken=localStorage.getItem("authorization")
+    const options={
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'authorization': `${getUserSessionToken}`
+      },
+      body:JSON.stringify({
+          postId:props.postId,
+      })
+    }
+    const undownvote_post=await fetch(url,options);
+    await undownvote_post.json();
+    }
+  }
+
+  
   const HandleUnUpVote=async()=>{
     setHandleVote(props.postId);
     setBooleanVote(false);
+    try{
+      upVoteHandler("no")
+    }
+    catch(err){
+      console.log("")
+    }
   }
 
 
