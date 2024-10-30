@@ -169,6 +169,7 @@ const HomeScreen=()=>{
 
     const showLoadingModal=(toggle="no")=>{
         const load_modal=document.querySelector(".load_parent_modal");
+        const MainApp=document.querySelector(".main_app");
         if(toggle==="no"){
             load_modal.style.display="none"
         }
@@ -194,7 +195,6 @@ const HomeScreen=()=>{
                 setLiveData(getResponse.reverse())
             }
 
-    
 
     useEffect(()=>{
         if(locationObj.pathname==="/app"){
@@ -246,7 +246,7 @@ const handleRantEvent=()=>{
         <>
         {/* <PointBalanceModal /> */}
         <LoadModal />
-        <Container>
+        <Container className="main_app">
             {/* Header  */}
             {/* Header */}
             <AppBarHeader style={{background:`${getAmbientColor.mainColor}`}}>
@@ -265,7 +265,7 @@ const handleRantEvent=()=>{
             <PostParentContainer>
                 {
                     liveData.map((data)=>(
-                        <PostModal key={data._id} postOwnerId={data.postOwnerId} revealPost="flex" postimage={data.media.photos} profilepics={data.profilePics} username={data.profileName} timestamp={data.timePosted} postcontent={data.content} />
+                        <PostModal key={data._id} postId={data._id} postOwnerId={data.postOwnerId} revealPost="flex" postimage={data.media.photos} profilepics={data.profilePics} username={data.profileName} timestamp={data.timePosted} postcontent={data.content} />
                     ))
                 }
            

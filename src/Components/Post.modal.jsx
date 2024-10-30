@@ -199,16 +199,53 @@ function formatTime(timestamp) {
 
 const PostModal=(props)=>{
   const navigateObj=useNavigate()
+  const [getBooleanVote,setBooleanVote]=useState(false)
+  const [getUpVote,setHandleVote]=useState(null);
+  const [getDownBooleanVote,setDownBooleanVote]=useState(false)
+  const [getDownVote,setDownVote]=useState(null)
 
   const HandleChanges=()=>{
     localStorage.setItem("temporalUserId",props.postOwnerId);
     navigateObj("/profile")
   }
 
+  const HandleUpVote=async()=>{
+    if(getDownBooleanVote===true){
+    setDownBooleanVote(false);  
+    }
+    setHandleVote(props.postId);
+    setBooleanVote(true);
+  }
+
+  const HandleUnUpVote=async()=>{
+    setHandleVote(props.postId);
+    setBooleanVote(false);
+  }
+
+
+  const HandleDownVote=async()=>{
+    if(getBooleanVote===true){
+      setBooleanVote(false)
+      setDownBooleanVote(true);
+      }else{
+      setDownBooleanVote(true);
+    }
+    setDownVote(props.postId)
+  }
+
+  
+  const HandleUnDownVote=async()=>{
+      setDownBooleanVote(false)
+    setDownVote(props.postId)
+  }
+
+
+  
+
 
     return(
       <ParentContainer style={{display:`${props.revealPost}`}}>
-<Container key={props.key} >     
+<Container keys={props.key} >     
 <ProfileContainer>
 <UserProfilePics onClick={()=>{HandleChanges()}} style={{cursor:"pointer",backgroundImage:`url(${props.profilepics})`} }></UserProfilePics>
 
@@ -240,8 +277,17 @@ const PostModal=(props)=>{
     
  {/* reaction section */}
  <ReactionContainer>
-   <BiUpvote size={19}/>
-   <BiDownvote size={19}/>
+  {getBooleanVote===false?(<BiUpvote size={19} onClick={()=>{HandleUpVote()}}  style={{cursor:"pointer"}} />):(
+    <BiSolidUpvote style={{cursor:"pointer", display:"flex"}} size={19} onClick={()=>{HandleUnUpVote()}}  />
+  )}
+
+  {
+    getDownBooleanVote===false ?(
+      <BiDownvote size={19} onClick={()=>{HandleDownVote()}}  style={{cursor:"pointer"}}  />
+    ):(
+      <BiSolidDownvote size={19} onClick={()=>{HandleUnDownVote()}}  style={{cursor:"pointer"}}  />
+    )
+  }
    <BsChatSquareText size={19} />
  </ReactionContainer>
 
