@@ -189,7 +189,7 @@ const ProfileScreen=()=>{
             const getPost=await fetch(url,ProtocolParams);
             const getResponsedata = await getPost.json();
             if(getResponsedata){
-                setPost(getResponsedata)
+                setPost(getResponsedata.reverse())
             }
     }
         
@@ -287,6 +287,7 @@ const ProfileScreen=()=>{
                             <PostModal key={getPost._id} revealPost="flex" profilepics={getPost.profilePics} postimage={getPost.media.photos} username={getPost.profileName} timestamp={getPost.timePosted} postcontent={getPost.content} />
                         )
                         :(    
+                            
                                 getPost.map((data)=>(
                                     <PostModal key={data._id} revealPost="flex" profilepics={data.profilePics} postimage={data.media.photos} username={data.profileName} timestamp={data.timePosted} postcontent={data.content} />
                                 ))

@@ -57,7 +57,7 @@ font-size:12.5px;
 `;
 
 const Timestamp = styled.p`
-font-size:11px;
+font-size:10px;
 `;
 
 const PostContent = styled.div`
@@ -168,6 +168,32 @@ const MediaContainer = styled.div`
   }
 `;
 
+function formatTime(timestamp) {
+  const now = new Date().getTime();
+  const diff = now - timestamp;
+  const seconds = Math.floor(diff / 1000);
+  const minutes = Math.floor(seconds / 60);
+  const hours = Math.floor(minutes / 60);
+  const days = Math.floor(hours / 24);
+  const months = Math.floor(days / 30);
+  const years = Math.floor(months / 12);
+
+  if (years > 0) {
+    return years + (years === 1 ? ' year ago' : ' years ago');
+  } else if (months > 0) {
+    return months + (months === 1 ? ' month ago' : ' months ago');
+  } else if (days > 0) {
+    return days + (days === 1 ? ' day ago' : ' days ago');
+  } else if (hours > 0) {
+    return hours + (hours === 1 ? ' hour ago' : ' hours ago');
+  } else 
+ if (minutes > 0) {
+    return minutes + (minutes === 1 ? ' minute ago' : ' minutes ago');
+  } else {
+    return 'just now';
+  }
+}
+
 
 
 
@@ -189,7 +215,7 @@ const PostModal=(props)=>{
     <ProfileSubContainer>
    <ProfileDataContainer>
        <UserProfileName>{props.username}</UserProfileName>
-       <Timestamp>{props.timestamp}</Timestamp>
+       <Timestamp>{formatTime(props.timestamp)}</Timestamp>
    </ProfileDataContainer>
    <SlOptionsVertical />
    </ProfileSubContainer>
