@@ -174,7 +174,8 @@ const ProfileScreen=()=>{
 
             // function to fectch user posts
     const fetchUserPost=async(userSessionToken="",userId="")=>{
-        const postdevurl="http://localhost:4432/endpoint/1.0/listUsersPost"
+        // const postdevurl="http://localhost:4432/endpoint/1.0/listUsersPost"
+        const url="https://sky-node.onrender.com/endpoint/1.0/listUsersPost"
         const ProtocolParams={
             method:"POST",
             headers: {
@@ -185,7 +186,7 @@ const ProfileScreen=()=>{
                 id:userId
               })
             }
-            const getPost=await fetch(postdevurl,ProtocolParams);
+            const getPost=await fetch(url,ProtocolParams);
             const getResponsedata = await getPost.json();
             if(getResponsedata){
                 setPost(getResponsedata)
@@ -199,8 +200,8 @@ const ProfileScreen=()=>{
         const fetchUserProfile=async()=>{
         const getOtherUserId=localStorage.getItem("temporalUserId")
         if( getOtherUserId!= undefined){
-            const devurl="http://localhost:4432/endpoint/1.0/getOtherUserData"
-            // const url="https://sky-node.onrender.com/endpoint/1.0/listAllUsersPost"
+            // const devurl="http://localhost:4432/endpoint/1.0/getOtherUserData"
+            const url="https://sky-node.onrender.com/endpoint/1.0/getOtherUserData"
             const getUserSessionToken=localStorage.getItem("authorization")
             const transportProtocolParams={
                 method:"POST",
@@ -212,7 +213,7 @@ const ProfileScreen=()=>{
                     id:getOtherUserId
                   })
                 }
-                const getPost=await fetch(devurl,transportProtocolParams);
+                const getPost=await fetch(url,transportProtocolParams);
                 const getResponse = await getPost.json();
                     await configureUserAmbientColor(getResponse.data.ambientColor);
                    await  setProfileData(getResponse.data)
