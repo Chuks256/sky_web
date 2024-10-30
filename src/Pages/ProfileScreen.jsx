@@ -6,6 +6,7 @@ import { SlOptionsVertical } from "react-icons/sl";
 import BottomNavigation from "../Components/BottomNavigation";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import LoadingModal from "../Components/Load.modal"
 
 const Container = styled.div`
 overflow-x:hidden;
@@ -118,6 +119,20 @@ const ProfileScreen=()=>{
     const [getIsUserAcct,setIsUserAcct]=useState(true);
     const [getPost,setPost]=useState([])
 
+
+    const showLoadingModal=(toggle="no")=>{
+        const load_modal=document.querySelector(".load_parent_modal");
+        if(toggle==="no"){
+            load_modal.style.display="none"
+        }
+        else
+        if(toggle==="yes"){
+            load_modal.style.display="flex";
+        }
+    }
+      
+
+
             // function to set user ambient color 
             const configureUserAmbientColor=(ambientColorChoice="")=>{
                 switch(ambientColorChoice){
@@ -198,6 +213,7 @@ const ProfileScreen=()=>{
     useEffect(()=>{
         window.scrollTo({top:0});
         const fetchUserProfile=async()=>{
+        showLoadingModal("yes")
         const getOtherUserId=localStorage.getItem("temporalUserId")
         if( getOtherUserId!= undefined){
             // const devurl="http://localhost:4432/endpoint/1.0/getOtherUserData"
@@ -220,6 +236,7 @@ const ProfileScreen=()=>{
                     await setIsUserAcct(getResponse.isUserAcct);
                     if(getResponse){
                         await fetchUserPost(getUserSessionToken,getOtherUserId);
+                        await showLoadingModal("no")
                         console.log(getResponse)  
                     }
                 }
@@ -238,6 +255,8 @@ const ProfileScreen=()=>{
     }
 
     return(
+        <>
+        <LoadingModal />
         <Container>
             <AppBarHeader style={{background:`${getAmbientColor.mainColor}`}}>
                 {/* profile header */}
@@ -299,6 +318,7 @@ const ProfileScreen=()=>{
             <BottomNavigation />
             </AppBarHeader>
         </Container>
+        </>
     )
 }
 

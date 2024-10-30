@@ -13,6 +13,7 @@ import PostModal from "../Components/Post.modal";
 import PointBalanceModal from "../Components/PointBalance.modal";
 import ErrorModal from "../Components/Error.modal";
 import AlertModal from "../Components/Alert.Modal"
+import LoadModal from "../Components/Load.modal";
 
 const Container = styled.div`
 display:flex;
@@ -165,6 +166,17 @@ const HomeScreen=()=>{
                 break;
         }
     }
+
+    const showLoadingModal=(toggle="no")=>{
+        const load_modal=document.querySelector(".load_parent_modal");
+        if(toggle==="no"){
+            load_modal.style.display="none"
+        }
+        else
+        if(toggle==="yes"){
+            load_modal.style.display="flex";
+        }
+    }
       
 
     const GetAllPost=async()=>{
@@ -182,10 +194,13 @@ const HomeScreen=()=>{
                 setLiveData(getResponse.reverse())
             }
 
+    
+
     useEffect(()=>{
         if(locationObj.pathname==="/app"){
             const fetchData=async()=>{
                 try{
+                    showLoadingModal("yes");
                     const getUserSessionToken=localStorage.getItem("authorization")
                     const url="https://sky-node.onrender.com/endpoint/1.0/getUserData"
                     const transportProtocolParams={
@@ -201,7 +216,8 @@ const HomeScreen=()=>{
                     setSkyPointBalance(`${getResponse.points} sky`)
                     if(getResponse){
                         try{
-                            GetAllPost();
+                            await GetAllPost();
+                            await showLoadingModal("no")
                         }
                         catch(err){
                             RevealErrorMessage("Something went wrong")
@@ -229,6 +245,7 @@ const handleRantEvent=()=>{
     return(
         <>
         {/* <PointBalanceModal /> */}
+        <LoadModal />
         <Container>
             {/* Header  */}
             {/* Header */}
