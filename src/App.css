@@ -49,5 +49,5 @@ input {
   outline:none;
 }
 *{
-  user-zoom:none;
+  scroll-behavior: smooth;
 }

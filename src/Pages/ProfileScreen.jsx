@@ -13,7 +13,6 @@ overflow-x:hidden;
 
 const AppBarHeader= styled.div`
 position:absolute;
-background:var(--sky-preference-default-color);
 width:100%;
 top:0px;
 height:40%;
@@ -32,7 +31,6 @@ justify-content:center;
 gap:7em;
 position:fixed;
 z-index:2;
-background:var(--sky-preference-bg-modified-shade-color);
 backdrop-filter:blur(10px);
 width:100%;
 `;
@@ -54,6 +52,8 @@ border-color:ivory;
 width:30px;
 height:30px;
 border-width:2px;
+background-size:cover;
+background-position:center;
 `;
 
 
@@ -113,99 +113,120 @@ padding-top:10px;
 
 const ProfileScreen=()=>{
     const navigateObj=useNavigate();
+    const [getProfileData,setProfileData]=useState({});
+    const [getAmbientColor,setAmbientColor]=useState("");
+    const [getIsUserAcct,setIsUserAcct]=useState(true);
+    const [getPost,setPost]=useState([])
+
+            // function to set user ambient color 
+            const configureUserAmbientColor=(ambientColorChoice="")=>{
+                switch(ambientColorChoice){
+                    case"Cold":
+                    const cold_color_scheme={
+                        mainColor:"var(--sky-preference-default-color)",
+                        subColor:"#2E97FF"
+                    }
+                    setAmbientColor(cold_color_scheme);
+                    break;
+        
+                    case "Hot":
+                        const hot_color_scheme={
+                            mainColor:"var(--sky-preference-fire-color)",
+                            subColor:"var(--sky-preference-fire-shade)"
+                        }
+                        setAmbientColor(hot_color_scheme);
+                        break;
+                    
+                    case "Royal":
+                        const royal_color_scheme={
+                            mainColor:"var(--sky-preference-royal-color)",
+                            subColor:"var(--sky-preference-royal-shade)"
+                        }
+                        setAmbientColor(royal_color_scheme);
+                        break;
+                    
+                    case "Pink":
+                        const pink_color_scheme={
+                            mainColor:"var(--sky-preference-pink-color)",
+                            subColor:"var(--sky-preference-pink-shade)"
+                        }
+                        setAmbientColor(pink_color_scheme);
+                        break;
+                    
+                    case "Soul":
+                        const soul_color_scheme={
+                            mainColor:"var(--sky-preference-soul-color)",
+                            subColor:"var(--sky-preference-soul-shade)"
+                        }
+                        setAmbientColor(soul_color_scheme);
+                        break;
+        
+                        
+                    case "SunShine":
+                        const sunshine_color_scheme={
+                            mainColor:"var(--sky-preference-summer-color)",
+                            subColor:"var(--sky-preference-summer-shade)"
+                        }
+                        setAmbientColor(sunshine_color_scheme);
+                        break;
+                }
+            }
+
+            // function to fectch user posts
+    const fetchUserPost=async(userSessionToken="",userId="")=>{
+        const postdevurl="http://localhost:4432/endpoint/1.0/listUsersPost"
+        const ProtocolParams={
+            method:"POST",
+            headers: {
+                'Content-Type': 'application/json',
+              'authorization': `${userSessionToken}`,
+              },
+              body:JSON.stringify({
+                id:userId
+              })
+            }
+            const getPost=await fetch(postdevurl,ProtocolParams);
+            const getResponsedata = await getPost.json();
+            if(getResponsedata){
+                setPost(getResponsedata)
+            }
+    }
+        
+
 
     useEffect(()=>{
-        if(localStorage.getItem("temporalUserId") != undefined){
-            
-        }
-    })
+        window.scrollTo({top:0});
+        const fetchUserProfile=async()=>{
+        const getOtherUserId=localStorage.getItem("temporalUserId")
+        if( getOtherUserId!= undefined){
+            const devurl="http://localhost:4432/endpoint/1.0/getOtherUserData"
+            // const url="https://sky-node.onrender.com/endpoint/1.0/listAllUsersPost"
+            const getUserSessionToken=localStorage.getItem("authorization")
+            const transportProtocolParams={
+                method:"POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'authorization': `${getUserSessionToken}`,
+                  },
+                  body:JSON.stringify({
+                    id:getOtherUserId
+                  })
+                }
+                const getPost=await fetch(devurl,transportProtocolParams);
+                const getResponse = await getPost.json();
+                    await configureUserAmbientColor(getResponse.data.ambientColor);
+                   await  setProfileData(getResponse.data)
+                    await setIsUserAcct(getResponse.isUserAcct);
+                    if(getResponse){
+                        await fetchUserPost(getUserSessionToken,getOtherUserId);
+                        console.log(getResponse)  
+                    }
+                }
+    
+            }
+            fetchUserProfile()
+        },[]);
 
-
-    const dummyData=[
-        {
-            username:"JaneTheBaddie",
-            timestamp:`${new Date().getSeconds()} Sec ago`,
-            postcontent:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore ",
-            postimage:[
-                {
-                    src:"https://i.pinimg.com/control/564x/7e/1e/42/7e1e42f47a4af412bfce7eee1df29708.jpg"
-                }
-            ]
-        },
-        {
-            username:"JaneTheBaddie",
-            timestamp:`${new Date().getSeconds()} Sec ago`,
-            postcontent:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore",
-            postimage:[
-                {
-                    src:"https://i.pinimg.com/736x/20/7e/f0/207ef089a3b11f0e52d2a40c80c7fc68.jpg"
-                },
-                {
-                    src:"https://i.pinimg.com/control/564x/43/d9/5b/43d95b2312ff74f118368708ea3438a5.jpg"
-                }
-            ]
-        },
-        {
-            username:"JaneTheBaddie",
-            timestamp:`${new Date().getSeconds()} Sec ago`,
-            postcontent:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore",
-            postimage:[
-                {src:"https://i.pinimg.com/control/474x/75/83/9c/75839c1c207394c929306c04871626c6.jpg" 
-                },
-                {
-                    src:"https://i.pinimg.com/736x/a6/46/11/a6461171b3897ba244050f60c0b63c47.jpg"
-                },
-                {
-                     src:"https://i.pinimg.com/control/564x/03/7a/1e/037a1ee9a1b9d4222f02acf4aa267c8f.jpg",
-                },
-                {
-                    src:"https://i.pinimg.com/564x/c6/cd/c2/c6cdc285dc0ec9b47aed926de291e0a1.jpg"
-                }
-            ]
-        },
-        {
-            username:"JaneTheBaddie",
-            timestamp:`${new Date().getSeconds()} Sec ago`,
-            postcontent:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore",
-            postimage:[
-                {src:"https://i.pinimg.com/474x/90/77/25/907725c1a28c7258a4ff4b602af20c9e.jpg"},
-                    {src:"https://i.pinimg.com/control/474x/e4/90/4e/e4904ed0b889260f9f428fb7a4d48b07.jpg"},
-                    {src:"https://i.pinimg.com/736x/3e/e5/21/3ee5216cbcbb6c11ff3ad37d2bbe9e5a.jpg"},
-            ]
-        },
-        {
-            username:"JaneTheBaddie",
-            timestamp:`${new Date().getSeconds()} Sec ago`,
-            postcontent:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore",
-            postimage:[
-                {src:"https://i.pinimg.com/control/564x/8b/13/79/8b137979ab5e74ef71563ca5066f0e1e.jpg"}
-            ]
-        },
-        {
-            username:"JaneTheBaddie",
-            timestamp:`${new Date().getSeconds()} Sec ago`,
-            postcontent:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et",
-            postimage:[]
-        },
-        {
-            username:"JaneTheBaddie",
-            timestamp:`${new Date().getSeconds()} Sec ago`,
-            postcontent:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore ",
-            postimage:[]
-        },
-        {
-            username:"JaneTheBaddie",
-            timestamp:`${new Date().getSeconds()} Sec ago`,
-            postcontent:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore ",
-            postimage:[]
-        },
-        {
-            username:"JaneTheBaddie",
-            timestamp:`${new Date().getSeconds()} Sec ago`,
-            postcontent:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore ",
-            postimage:[]
-        }
-    ]
 
     const HandleBackBtn=()=>{
         const getOtherUserId=localStorage.getItem("temporalUserId");
@@ -217,11 +238,11 @@ const ProfileScreen=()=>{
 
     return(
         <Container>
-            <AppBarHeader>
+            <AppBarHeader style={{background:`${getAmbientColor.mainColor}`}}>
                 {/* profile header */}
-                <ProfileHeaderContainer>
+                <ProfileHeaderContainer >
                     <IoArrowBack onClick={()=>{HandleBackBtn()}} style={{cursor:"pointer"}} size={25} />
-                    <ProfileUserName>Degen</ProfileUserName>
+                    <ProfileUserName>{getProfileData.profileName}</ProfileUserName>
                     <SlOptionsVertical style={{cursor:"pointer"}} size={20}/>
                 </ProfileHeaderContainer>
 
@@ -229,14 +250,14 @@ const ProfileScreen=()=>{
                 <ProfileUserDataContainer>
                     
                     <ProfileBioContainer>
-                    <ProfileUserPics></ProfileUserPics>
-                    <ProfileUserBio>@Degen</ProfileUserBio>
+                    <ProfileUserPics style={{backgroundImage:`url(${getProfileData.profilePics})`}}></ProfileUserPics>
+                    <ProfileUserBio>@{getProfileData.profileName}</ProfileUserBio>
                     </ProfileBioContainer>
 
                     {/* Stats parent container  */}
                     <StatsParentContainer>
                         <StatsSubContainer>
-                            <StatsNumber>100k</StatsNumber>
+                            <StatsNumber>600</StatsNumber>
                             <StatsLabel>Followers</StatsLabel>
                         </StatsSubContainer>
 
@@ -246,21 +267,30 @@ const ProfileScreen=()=>{
                         </StatsSubContainer>
 
                         <StatsSubContainer>
-                            <StatsNumber>2000 Sky</StatsNumber>
+                            <StatsNumber>{getProfileData.points} Sky</StatsNumber>
                             <StatsLabel>Points</StatsLabel>
                         </StatsSubContainer>
                     </StatsParentContainer>           
                 </ProfileUserDataContainer>
-
-            <FollowProfileBtn style={{cursor:"pointer"}}>Follow</FollowProfileBtn>
-               
+                {
+                getIsUserAcct?(
+                  <></>
+                ): (
+                <FollowProfileBtn style={{cursor:"pointer"}}>Follow</FollowProfileBtn>)         
+                }
+           
                 {/* user post */}
                 <PostContainer>
-            {
-                    dummyData.map((data)=>(
-                        <PostModal revealPost="flex" postimage={data.postimage} username={data.username} timestamp={data.timestamp} postcontent={data.postcontent} />
-                    ))
-                }
+                    {
+                        Array.isArray(getPost)===false ?(
+                            <PostModal key={getPost._id} revealPost="flex" profilepics={getPost.profilePics} postimage={getPost.media.photos} username={getPost.profileName} timestamp={getPost.timePosted} postcontent={getPost.content} />
+                        )
+                        :(    
+                                getPost.map((data)=>(
+                                    <PostModal key={data._id} revealPost="flex" profilepics={data.profilePics} postimage={data.media.photos} username={data.profileName} timestamp={data.timePosted} postcontent={data.content} />
+                                ))
+                         )
+                    }
             </PostContainer>
 
             {/* Bottom navigation */}
